@@ -4,14 +4,14 @@
     "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj": {
+    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
-        "projectName": "Scheduler.Services",
-        "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
+        "projectUniqueName": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj",
+        "projectName": "Scheduler.Domain",
+        "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj",
         "packagesPath": "C:\\Users\\bsedw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\obj\\",
+        "outputPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,109 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
+        "projectName": "Scheduler.Services",
+        "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
+        "packagesPath": "C:\\Users\\bsedw\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bsedw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
+                "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.2.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

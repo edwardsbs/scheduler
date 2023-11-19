@@ -1,0 +1,14 @@
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\bin\Debug\net7.0\Scheduler.Domain.deps.json
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\bin\Debug\net7.0\Scheduler.Domain.runtimeconfig.json
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\bin\Debug\net7.0\Scheduler.Domain.dll
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\bin\Debug\net7.0\Scheduler.Domain.pdb
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.csproj.AssemblyReference.cache
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.AssemblyInfoInputs.cache
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.AssemblyInfo.cs
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.csproj.CoreCompileInputs.cache
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.dll
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\refint\Scheduler.Domain.dll
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.pdb
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\Scheduler.Domain.genruntimeconfig.cache
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Domain\obj\Debug\net7.0\ref\Scheduler.Domain.dll

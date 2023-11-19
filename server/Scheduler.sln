@@ -4,6 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scheduler.API", "Scheduler.API\Scheduler.API.csproj", "{E74868A0-6A10-48FA-BCC0-0DBF59F246C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A59604BC-4B56-4144-95D8-C90FE912FAD0} = {A59604BC-4B56-4144-95D8-C90FE912FAD0}
+		{F8B05F95-E0FD-45AC-9691-7CD7C994435A} = {F8B05F95-E0FD-45AC-9691-7CD7C994435A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Domain", "Scheduler.Domain\Scheduler.Domain.csproj", "{E922A208-253E-4970-98C0-8B507482C2B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Models", "Scheduler.Models\Scheduler.Models.csproj", "{F8B05F95-E0FD-45AC-9691-7CD7C994435A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Services", "Scheduler.Services\Scheduler.Services.csproj", "{A59604BC-4B56-4144-95D8-C90FE912FAD0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E922A208-253E-4970-98C0-8B507482C2B3} = {E922A208-253E-4970-98C0-8B507482C2B3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +28,18 @@ Global
 		{E74868A0-6A10-48FA-BCC0-0DBF59F246C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E74868A0-6A10-48FA-BCC0-0DBF59F246C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E74868A0-6A10-48FA-BCC0-0DBF59F246C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E922A208-253E-4970-98C0-8B507482C2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E922A208-253E-4970-98C0-8B507482C2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E922A208-253E-4970-98C0-8B507482C2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E922A208-253E-4970-98C0-8B507482C2B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8B05F95-E0FD-45AC-9691-7CD7C994435A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8B05F95-E0FD-45AC-9691-7CD7C994435A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8B05F95-E0FD-45AC-9691-7CD7C994435A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8B05F95-E0FD-45AC-9691-7CD7C994435A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59604BC-4B56-4144-95D8-C90FE912FAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59604BC-4B56-4144-95D8-C90FE912FAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59604BC-4B56-4144-95D8-C90FE912FAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59604BC-4B56-4144-95D8-C90FE912FAD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
