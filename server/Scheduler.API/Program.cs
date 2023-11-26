@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Scheduler.Domain;
+using Scheduler.Services;
 using Scheduler.Services.Handlers.Contracts;
 using Scheduler.Services.Handlers.Holidays.Queries;
 using System.Reflection;
@@ -10,10 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
-builder.Services.AddDbContext<SchedulerContext>(opts => opts.UseSqlServer(configuration["ConnectionString:SchedulerDB"],
-    x => x.MigrationsAssembly(typeof(SchedulerContext).Assembly.FullName))
-    .EnableSensitiveDataLogging()
-);
+
+builder.Services.AddSchedulerApps(configuration);
 
 builder.Services.AddControllers()
     .AddJsonOptions(opt =>
@@ -26,21 +25,22 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(opts => opts.AddDefaultPolicy(policy =>
+builder.Services.AddCors(opts => {
+    //opts.AddPolicy("AllowAngularOrigins");
+    opts.AddDefaultPolicy(policy =>
     {
         var origins = configuration["AllowedOrigins"].Split(",").ToList();
         policy
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowAnyOrigin()
-        .WithOrigins(origins.ToArray());
-    })
+        .WithOrigins(origins.ToArray())
+        .WithOrigins("http://localhost:4200");
+    });
+    }
 );
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidaysListHandler).GetTypeInfo().Assembly));
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidayDatesHandler).GetTypeInfo().Assembly));
-builder.Services.AddTransient<ISchedulerContext>();
 
 var app = builder.Build();
 
@@ -51,7 +51,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
+//app.UseAuthorization();
+
+app.UseCors();
 
 app.MapControllers();
 
