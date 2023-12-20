@@ -11,6 +11,8 @@ export class HolidaysComponent implements OnInit {
   holidayDates$ = this.store.holidayDates$;
   holidays$ = this.store.holidays$;
 
+  displayedColumns: string[] = ['holidayName', 'isPlantObserved', 'note'];
+
   constructor(
     private readonly store: HolidayStore
   ) { }

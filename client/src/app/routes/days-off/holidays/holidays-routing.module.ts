@@ -8,7 +8,7 @@ const routes: Routes = [
         component: HolidaysComponent
     },
     {
-        path: 'days-off',
+        path: 'holidays',
         component: HolidaysComponent
     }
 ]

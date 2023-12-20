@@ -9,9 +9,9 @@ export type Holiday = {
 export type HolidayDate = {
     holidayDateId: number;
     observeDate: Date | string;
-    yearId: number;
+    yearId?: number;
     year?: Year;
-    holidayId: number | null;
+    holidayId?: number | null;
     holiday?: Holiday;
 }
 

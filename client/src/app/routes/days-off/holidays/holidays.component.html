@@ -1,0 +1,78 @@
+<!-- <div class="spinner-container" *ngIf="!(holidayDates$ | async)">
+  Loadng
+</div>
+<div>
+  <kendo-grid 
+  *ngIf="holidayDates$ | async as holidayDates"
+    [kendoGridBinding]="holidayDates"
+    [filterable]="true"
+    [resizable]="true"
+    [sortable]="true">
+    <kendo-grid-column field="holiday.holidayName" title="Holiday Name"></kendo-grid-column>
+    <kendo-grid-column field="holiday.isPlantObserved" title="Plant Holiday"> </kendo-grid-column>
+    <kendo-grid-column field="holiday.note" title="Note"> </kendo-grid-column>
+</kendo-grid>
+  <kendo-grid 
+  *ngIf="holidays$ | async as holidays"
+    [kendoGridBinding]="holidays"
+    [filterable]="true"
+    [resizable]="true"
+    [sortable]="true">
+    <kendo-grid-column field="holidayName" title="Holiday Name"></kendo-grid-column>
+    <kendo-grid-column field="isPlantObserved" title="Plant Holiday"> </kendo-grid-column>
+    <kendo-grid-column field="note" title="Note"> </kendo-grid-column>
+</kendo-grid>
+</div> -->
+<!-- <div class="example-container mat-elevation-z8"> -->
+<div class="example-table-container">
+  <table mat-table 
+    *ngIf="holidays$ | async as holidays"
+    [dataSource]="holidays" 
+    matSort 
+    class="example-table"
+    >
+    <!-- (matSortChange)="announceSortChange($event)" -->
+
+    <ng-container matColumnDef="holidayName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+        Holiday
+      </th>
+      <td mat-cell *matCellDef="let holiday"> {{holiday.holidayName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isPlantObserved">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+        Plant Holiday
+      </th>
+      <td mat-cell *matCellDef="let holiday"> {{holiday.isPlantObserved}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="note">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+        Note
+      </th>
+      <td mat-cell *matCellDef="let holiday"> {{holiday.note}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <!-- <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+        Symbol
+      </th>
+      <td mat-cell *matCellDef="let holiday"> {{holiday.symbol}} </td>
+    </ng-container> -->
+
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Date">
+        No.
+      </th>
+      <td mat-cell *matCellDef="let holiday"> {{holiday.position}} </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<!-- </div> -->
+

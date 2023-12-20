@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HolidaysComponent } from './routes/holidays/holidays.component';
+import { HolidaysComponent } from './routes/days-off/holidays/holidays.component';
 import { BrowserModule } from '@angular/platform-browser';
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
   },      
   {
     path: 'days-off',
-    loadChildren: () => import('./routes/holidays/holidays.module').then(m => m.HolidaysModule)
+    loadChildren: () => import('./routes/days-off/days-off.module').then(m => m.DaysOffModule)
   },
 
   
