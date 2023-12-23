@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HolidaysComponent } from './routes/days-off/holidays/holidays.component';
 import { BrowserModule } from '@angular/platform-browser';
 
 const routes: Routes = [

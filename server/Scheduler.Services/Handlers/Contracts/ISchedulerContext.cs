@@ -11,6 +11,8 @@ public class ISchedulerContext : SchedulerContext
     public DbSet<Holiday> Holiday { get; set; }
     public DbSet<HolidayDate> HolidayDate { get; set; }
     public DbSet<Year> Year { get; set; }
+    public DbSet<PtoAnnual> PtoAnnual { get; set; }
+    public DbSet<PtoSchedule> PtoSchedule { get; set; }
 
     //protected override void OnModelCreating(ModelBuilder modelBuilder)
     //{

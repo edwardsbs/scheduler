@@ -158,6 +158,72 @@ namespace Scheduler.Domain.Migrations
                     b.ToTable("HolidayDate", "scheduler");
                 });
 
+            modelBuilder.Entity("Scheduler.Domain.Models.PtoAnnual", b =>
+                {
+                    b.Property<int>("PtoAnnualId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PtoAnnualId"));
+
+                    b.Property<float?>("CarriedOverHours")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("FloatingHours")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("PtoDays")
+                        .HasColumnType("real");
+
+                    b.Property<float>("PtoHours")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("PurchasedHours")
+                        .HasColumnType("real");
+
+                    b.Property<int>("YearId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PtoAnnualId");
+
+                    b.HasIndex("YearId");
+
+                    b.ToTable("PtoAnnual", "scheduler");
+                });
+
+            modelBuilder.Entity("Scheduler.Domain.Models.PtoSchedule", b =>
+                {
+                    b.Property<int>("PtoScheduleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PtoScheduleId"));
+
+                    b.Property<float>("Hours")
+                        .HasColumnType("real");
+
+                    b.Property<bool>("IsScheduled")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsTaken")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PtoAnnualId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PtoDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PtoScheduleId");
+
+                    b.HasIndex("PtoAnnualId");
+
+                    b.ToTable("PtoSchedule", "scheduler");
+                });
+
             modelBuilder.Entity("Scheduler.Domain.Models.Year", b =>
                 {
                     b.Property<int>("YearId")
@@ -199,7 +265,7 @@ namespace Scheduler.Domain.Migrations
             modelBuilder.Entity("Scheduler.Domain.Models.HolidayDate", b =>
                 {
                     b.HasOne("Scheduler.Domain.Models.Holiday", "Holiday")
-                        .WithMany("HolidayDates")
+                        .WithMany()
                         .HasForeignKey("HolidayId");
 
                     b.HasOne("Scheduler.Domain.Models.Year", "Year")
@@ -213,9 +279,31 @@ namespace Scheduler.Domain.Migrations
                     b.Navigation("Year");
                 });
 
-            modelBuilder.Entity("Scheduler.Domain.Models.Holiday", b =>
+            modelBuilder.Entity("Scheduler.Domain.Models.PtoAnnual", b =>
                 {
-                    b.Navigation("HolidayDates");
+                    b.HasOne("Scheduler.Domain.Models.Year", "Year")
+                        .WithMany()
+                        .HasForeignKey("YearId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Year");
+                });
+
+            modelBuilder.Entity("Scheduler.Domain.Models.PtoSchedule", b =>
+                {
+                    b.HasOne("Scheduler.Domain.Models.PtoAnnual", "PtoAnnual")
+                        .WithMany("PtoSchedules")
+                        .HasForeignKey("PtoAnnualId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PtoAnnual");
+                });
+
+            modelBuilder.Entity("Scheduler.Domain.Models.PtoAnnual", b =>
+                {
+                    b.Navigation("PtoSchedules");
                 });
 #pragma warning restore 612, 618
         }

@@ -29,7 +29,7 @@ body {
 } */
 
 /* .p-tabview .p-tabview-nav li .p-tabview-nav-link  */
-.p-tabpanel {
+/* .p-tabpanel {
     border: solid #103888;
     border-width: 0 0 2px 0;
     border-color: transparent transparent #143881 transparent;
@@ -64,4 +64,15 @@ body {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
+} */
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link .p-tabpanel {
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
 }

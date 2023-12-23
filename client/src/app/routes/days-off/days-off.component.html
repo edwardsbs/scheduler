@@ -26,9 +26,9 @@
 </mat-tab-group> -->
 
 <div class="card">
-  <p-tabView >
+  <p-tabView styleClass="tabview-custom">
 
-    <p-tabPanel>
+    <p-tabPanel header="Header I">
         <ng-template pTemplate="header">
             <i class="pi pi-calendar mr-1"></i>
             <span>PTO</span>
@@ -39,7 +39,7 @@
         </p>
     </p-tabPanel>
 
-    <p-tabPanel  >
+    <p-tabPanel  header="Header II">
         <ng-template pTemplate="header">
           <i class="fa-solid fa-gift mr-1"></i>
             <span>Holidays</span>
@@ -50,7 +50,7 @@
     <p-tabPanel header="Header III">
         <ng-template pTemplate="header">
             <i class="pi pi-search mr-1"></i>
-            <span>Schedule</span>
+            <span style="text-decoration: none">Schedule</span>
         </ng-template>
         <p>
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa

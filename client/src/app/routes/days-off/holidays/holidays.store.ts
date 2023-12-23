@@ -1,7 +1,8 @@
+import { tap } from 'rxjs';
 import { Holiday, HolidayDate } from './data-access/models/index';
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { map, switchMap, tap } from 'rxjs';
+
 import { HolidaysHttpService } from './data-access/services/holidays-http.service';
 
 export interface HolidayState {

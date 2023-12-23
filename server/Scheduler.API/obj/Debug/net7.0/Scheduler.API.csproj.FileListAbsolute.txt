@@ -82,3 +82,5 @@ C:\Users\bsedw\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\MediatR.Ext
 C:\Users\bsedw\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\bsedw\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\Scheduler.Services.dll
 C:\Users\bsedw\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\Scheduler.Services.pdb
+C:\Users\bsedw\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\bsedw\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\Dapper.dll

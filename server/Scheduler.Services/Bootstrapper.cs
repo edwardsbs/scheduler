@@ -4,11 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Scheduler.Domain;
 using Scheduler.Services.Handlers.Contracts;
 using Scheduler.Services.Handlers.Holidays.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Scheduler.Services.Handlers.Pto.Queries;
+using Scheduler.Services.Handlers.Repositories.Holidays;
 
 namespace Scheduler.Services;
 
@@ -30,9 +27,12 @@ public static class Bootstrapper
         //Mediator
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidaysListHandler).Assembly));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidayDatesHandler).Assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetPtoScheduleByPtoAnnualHandler).Assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidayDatesFromRepoHandler).Assembly));
 
         //Repositories
-        
+        services.AddTransient<IHolidaysRepo, HolidaysRepo>();
+
 
 
         return services;

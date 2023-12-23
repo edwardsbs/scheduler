@@ -19,6 +19,7 @@ builder.Services.AddControllers()
         {
             opt.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             opt.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
+            //opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
         }
     );
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -34,8 +35,9 @@ builder.Services.AddCors(opts => {
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowAnyOrigin()
-        .WithOrigins(origins.ToArray())
-        .WithOrigins("http://localhost:4200");
+        .WithOrigins(origins.ToArray());
+        
+        //.WithOrigins("http://localhost:4200")
     });
     }
 );
