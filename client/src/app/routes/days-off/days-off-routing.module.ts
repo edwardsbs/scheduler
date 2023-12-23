@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
 import { DaysOffComponent } from "./days-off.component";
-import { HolidaysComponent } from "./holidays/holidays.component";
+import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
     {

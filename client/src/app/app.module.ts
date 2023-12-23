@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +17,6 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SidenavModule } from './shared/sidenav/sidenav.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DaysOffModule } from './routes/days-off/days-off.module';
-// import { GridModule } from '@progress/kendo-angular-grid';
-// import { ButtonModule } from '@progress/kendo-angular-buttons';
 
 @NgModule({
   declarations: [	
@@ -26,6 +25,7 @@ import { DaysOffModule } from './routes/days-off/days-off.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     BrowserAnimationsModule,
     CommonModule,
     RouterOutlet,
@@ -42,8 +42,6 @@ import { DaysOffModule } from './routes/days-off/days-off.module';
     TimeTrackingModule,
     DaysOffModule,
     HttpClientModule,
-    // ButtonModule,
-    // GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

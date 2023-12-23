@@ -7,6 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { HolidaysModule } from './holidays/holidays.module';
 import { HolidaysComponent } from './holidays/holidays.component';
 import {MatTableModule} from '@angular/material/table';
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   imports: [
@@ -16,6 +18,8 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     HolidaysModule,
     MatTableModule,
+    CardModule,
+    TabViewModule,
   ],
   declarations: [DaysOffComponent, HolidaysComponent]
 })
