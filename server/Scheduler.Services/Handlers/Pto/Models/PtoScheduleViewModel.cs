@@ -19,6 +19,7 @@ public class PtoScheduleViewModel
     //public int PtoAnnualId { get; set; }
     //public PtoAnnual? PtoAnnual { get; set; }
     public int Year { get; set; }
+    public string? DayOfWeek { get; set; }
 
     //public void CreateMappings(Profile config)
     //{

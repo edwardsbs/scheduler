@@ -32,6 +32,12 @@ public class PtoController : ControllerBase
         return Ok(await _mediator.Send(new GetPtoScheduleByPtoAnnulRequest(id)));
     }
 
+    [HttpGet("year/{year}")]
+    public async Task<ActionResult> GetPtoScheduleByYear(int year)
+    {
+        return Ok(await _mediator.Send(new GetPtoScheduleForYearRequest(year)));
+    }
+
     //// GET api/<PtoController>/5
     //[HttpGet("{id}")]
     //public string GetPtoScheduleByYearId(int id)

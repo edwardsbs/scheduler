@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Handlers\Holidays\Commands\" />
     <Folder Include="Handlers\Pto\Commands\" />
+    <Folder Include="Handlers\Scheduler\Commands\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -28,6 +28,7 @@ public static class Bootstrapper
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidaysListHandler).Assembly));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidayDatesHandler).Assembly));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetPtoScheduleByPtoAnnualHandler).Assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetPtoScheduleForYearHandler).Assembly));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidayDatesFromRepoHandler).Assembly));
 
         //Repositories
