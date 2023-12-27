@@ -17,6 +17,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SidenavModule } from './shared/sidenav/sidenav.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DaysOffModule } from './routes/days-off/days-off.module';
+import { StoreModule } from '@ngrx/store';
+import { daysOffReducer } from './routes/days-off/data-access/store/days-off.reducer';
 
 @NgModule({
   declarations: [	
@@ -42,6 +44,7 @@ import { DaysOffModule } from './routes/days-off/days-off.module';
     TimeTrackingModule,
     DaysOffModule,
     HttpClientModule,
+    StoreModule.forRoot({ dasyOff: daysOffReducer }, {}),
   ],
   providers: [],
   bootstrap: [AppComponent]

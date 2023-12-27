@@ -13,41 +13,43 @@
 </mat-toolbar>
 
 <mat-sidenav-container>  
-  
-  
-
-
+ 
   <mat-sidenav #sidenav="matSidenav" mode="side" class="mat-elevation-z8" opened>
     <button mat-button class="menu-button"
       routerLink="/home-dashboard"
       [routerLinkActiveOptions]="{exact: true}"
       routerLinkActive="active-link">      
-      <mat-icon  style="color: white">home</mat-icon>
+      <!-- <mat-icon  style="color: white">home</mat-icon> -->
+      <i class="fa-solid fa-house-chimney mr-2"></i>
+      <!-- <i class="bi bi-house mr-2"></i> -->
       <span  class="nav-text">Home</span>
     </button>
     <button mat-button class="menu-button"
       routerLink="/time-tracking" 
       routerLinkActive="active-link">
-      <mat-icon style="color: white">schedule</mat-icon>
+      <!-- <mat-icon style="color: white">schedule</mat-icon> -->
+      <i class="fa-regular fa-clock mr-2"></i>
       <span  class="nav-text">Time Tracking</span>
     </button>
     <button mat-button class="menu-button"
       routerLink="/days-off"
       routerLinkActive="active-link">
-      <mat-icon  style="color: white">calendar_month</mat-icon>
+      <!-- <mat-icon  style="color: white">calendar_month</mat-icon> -->
+      <!-- <i class="fa-regular fa-calendar-days mr-2"></i> -->
+      <i class="bi bi-calendar-week mr-2"></i>
       <span  class="nav-text">Days Off</span>
     </button>
     
     <mat-divider  class="nav-text"></mat-divider>
   
     <button mat-button class="menu-button">
-      <mat-icon  style="color: white">help</mat-icon>
+      <!-- <mat-icon  style="color: white">help</mat-icon> -->
+      <i class="fa-solid fa-question mr-2"></i>
       <span class="nav-text">Help</span>
     </button>
   </mat-sidenav>
-  <mat-sidenav-content>
 
-  
+  <mat-sidenav-content >  
     <!-- <div class="content mat-elevation-z8"> -->
       <router-outlet></router-outlet>
     <!-- </div> -->

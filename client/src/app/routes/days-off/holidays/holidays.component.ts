@@ -4,14 +4,14 @@ import { HolidayStore } from './holidays.store';
 @Component({
   selector: 'app-holidays',
   templateUrl: './holidays.component.html',
-  styleUrls: ['./holidays.component.css'],
+  styleUrls: ['./holidays.component.scss'],
 })
 export class HolidaysComponent implements OnInit {
 
   holidayDates$ = this.store.holidayDates$;
   holidays$ = this.store.holidays$;
 
-  displayedColumns: string[] = ['holidayName', 'isPlantObserved', 'note'];
+  // displayedColumns: string[] = ['holidayName', 'isPlantObserved', 'note'];
 
   constructor(
     private readonly store: HolidayStore
