@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { PtoSchedule } from './data-access/models';
+import { NewPto, PtoSchedule, initialPtoSchedule } from './data-access/models';
 import { PtoHttpService } from './data-access/services/pto-http.service';
-// import { DaysOffActions } from '../data-access/store/days-off.actions';
 import { tap, skip, switchMap, Observable, map } from 'rxjs'
 import { DaysOffStore } from '../days-off.store';
-// import { ofType } from '@ngrx/effects'
-// import { DaysOffState, DaysOffStateItems } from '../data-access/store/days-off.state';
-// import { DialogService } from '@progress/kendo-angular-dialog';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { AddEditModalComponent } from './add-edit-modal/add-edit-modal.component';
+import { formatDate } from '@angular/common';
 
 export type PtoStoreState = {
-    ptoSchdule: PtoSchedule[]
+    ptoSchedule: PtoSchedule[],
+    ptoRemainingHours: number;
 }
 
 const initialPtoStoreState: PtoStoreState = {
-    ptoSchdule: []
+    ptoSchedule: [],
+    ptoRemainingHours: 0,
 }
 
 @Injectable()
@@ -39,17 +38,46 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
     }
 
     //SELECTORS
-    ptoSchedule$ = this.select(x => x.ptoSchdule);
+    ptoSchedule$ = this.select(x => x.ptoSchedule);
 
     selectedYear$ = this.daysOffStore.selectedYear$;
+
+    ptoRemainingHours$ = this.select(
+        this.ptoSchedule$,
+        (pto) => {
+            const p = pto as PtoSchedule[]
+            const bdHours = p.map(p => p.burndownHours);
+            return Math.min(...bdHours)
+        }
+    )
 
 
     //UPDATERS
     setPtoSchedule = this.updater((state, ptoData: PtoSchedule[]) => {
-        // console.log('pto schedule', ptoData)
+        console.log('pto schedule', ptoData)
         return {
             ...state,
-            ptoSchdule: ptoData
+            ptoSchedule: ptoData
+        }
+    })
+
+    addPtoSchedule = this.updater((state, pto: PtoSchedule) => {  
+        // let newSchedule = this.buildBurndown(state.ptoSchedule.concat(pto));
+        return {
+            ...state,
+            ptoSchedule: this.buildBurndown(state.ptoSchedule.concat(pto)),
+        }
+    })
+
+    editPtoSchedule = this.updater((state, pto: PtoSchedule) => {  
+        
+        let sched = state.ptoSchedule;
+        let indexToUpdate = sched.findIndex(item => item.ptoScheduleId === pto.ptoScheduleId);
+        sched[indexToUpdate] = pto;
+
+        return {
+            ...state,
+            ptoSchedule: this.buildBurndown(sched),
         }
     })
     
@@ -70,14 +98,13 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
         pto$.pipe(
            switchMap((pto: PtoSchedule) => {
 
-            // const dateString = 
-
             const dialog = this.dialogService.open(AddEditModalComponent, {
                 data: {
                     pto: pto
                 },
                 header: `Edit PTO for ${this.convertDateString(new Date(pto.ptoDate))}`,
-                width: '50vw',
+                width: '30vw',
+                contentStyle: { overflow: 'auto' },
                 modal: true,
                 // templates: {
                 //     footer: Footer
@@ -91,12 +118,80 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
            }),
            switchMap((pto: any) => {
                 if(pto) {
-                    // http call to save changes
-                    return [
-                        this.messageService.add({ severity: 'info', summary: 'PTO Saved', detail: pto.reason?? '' })
-                    ]       
+                    this.http.editPto(pto).subscribe(() => {
+                            
+                        const dayOfWeek = formatDate(pto.ptoDate, 'EEEE', 'en-US').toString()
+                        const ptoWithDayOfWeek = {
+                            ...pto,
+                            dayOfWeek: dayOfWeek
+                        } as PtoSchedule
+
+                        return [
+                            this.messageService.add({ severity: 'success', summary: 'PTO Updated', detail: pto.reason?? '' }),
+                            this.editPtoSchedule(ptoWithDayOfWeek)
+                        ]
+                    },
+                    (err: Error) => {
+                        return [
+                            this.messageService.add({ severity: 'error', summary: 'PTO Not Saved', detail: err.message?? '' })
+                        ] 
+                    });      
                 }
                     return []
+            })
+        )
+    )
+
+    addPto = this.effect((trigger$) => 
+        trigger$.pipe(
+           switchMap(() => {
+
+            const dialog = this.dialogService.open(AddEditModalComponent, {
+                data: {
+                    pto: initialPtoSchedule
+                },
+                header: `Add New PTO`,
+                width: '30vw',
+                contentStyle: { overflow: 'auto' },
+                modal: true,
+            });            
+            
+            return dialog.onClose.pipe(
+                map((pto: any) => pto)
+            );
+
+           }),
+           switchMap((pto: any) => {
+                if(pto) {
+                    let newPto: NewPto = {
+                        ptoDate: pto.ptoDate,
+                        reason: pto.reason,
+                        hours: pto.hours,
+                        isScheduled: pto.isScheduled,
+                        isTaken: pto.isTaken,
+                    }
+
+                    this.http.addPto(newPto).subscribe(() => {
+                            
+                        const dayOfWeek = formatDate(newPto.ptoDate, 'EEEE', 'en-US').toString()
+                        const ptoWithDayOfWeek = {
+                            ...pto,
+                            dayOfWeek: dayOfWeek
+                        } as PtoSchedule
+
+                        return [
+                            this.messageService.add({ severity: 'success', summary: 'PTO Added', detail: pto.reason?? '' }),
+                            this.addPtoSchedule(ptoWithDayOfWeek)
+                        ]
+                    },
+                    (err: Error) => {
+                        return [
+                            this.messageService.add({ severity: 'error', summary: 'PTO Not Saved', detail: err.message?? '' })
+                        ] 
+                    });  
+                }
+
+                return []
             })
         )
     )
@@ -111,6 +206,20 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
         if (mm < 10) mm = 0 + mm;
 
         return dd + '/' + mm + '/' + yyyy;
+    }
+
+
+    buildBurndown(pto: PtoSchedule[]) {
+        let startingBdHours = pto[0].burndownHours + pto[0].hours;
+        return pto.map(p => {
+            const hours = startingBdHours - p.hours;
+            startingBdHours -= p.hours;
+            return {
+                ...p,
+                burndownHours: hours,
+                burndownDays: (hours / 8.0),
+            }
+        })
     }
 
     // setDefaultPtoSchedule = this.effect((trigger$) => 

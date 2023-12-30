@@ -43,6 +43,33 @@ public class GetPtoScheduleForYearHandler : IRequestHandler<GetPtoScheduleForYea
 
         var ptoSchedule = mapper.Map<List<PtoScheduleViewModel>>(pto);
 
+        var ptoAnnual = pto[0].PtoAnnual;
+
+        if (ptoAnnual != null)
+        {
+            ptoSchedule = GenerateBurndown(ptoSchedule, ptoAnnual);
+        }
+
         return ptoSchedule;
     }
+
+    private List<PtoScheduleViewModel> GenerateBurndown(List<PtoScheduleViewModel> ptoSchedule, PtoAnnual ptoAnnual)
+    {
+        var ptoWorking = ptoSchedule.OrderBy(x => x.PtoDate).ToList();
+
+        var startingPtoHours = (int)ptoAnnual.PtoHours + (int)ptoAnnual.PurchasedHours + (int)ptoAnnual.CarriedOverHours + (int)ptoAnnual.FloatingHours;
+        var availablePtoHours = startingPtoHours;
+
+        foreach (var pto in ptoWorking)
+        {
+            pto.BurndownHours = (availablePtoHours - (int)pto.Hours);
+
+            pto.BurndownDays = (double)(pto.BurndownHours / 8.0);
+
+            availablePtoHours -= (int)pto.Hours;
+        }
+
+        return ptoSchedule;
+    }
+
 }

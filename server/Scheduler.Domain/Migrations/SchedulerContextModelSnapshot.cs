@@ -166,10 +166,13 @@ namespace Scheduler.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PtoAnnualId"));
 
-                    b.Property<float?>("CarriedOverHours")
+                    b.Property<float>("CarriedOverHours")
                         .HasColumnType("real");
 
-                    b.Property<float?>("FloatingHours")
+                    b.Property<float>("CompTimeHours")
+                        .HasColumnType("real");
+
+                    b.Property<float>("FloatingHours")
                         .HasColumnType("real");
 
                     b.Property<float?>("PtoDays")
@@ -178,7 +181,7 @@ namespace Scheduler.Domain.Migrations
                     b.Property<float>("PtoHours")
                         .HasColumnType("real");
 
-                    b.Property<float?>("PurchasedHours")
+                    b.Property<float>("PurchasedHours")
                         .HasColumnType("real");
 
                     b.Property<int>("YearId")
@@ -293,17 +296,12 @@ namespace Scheduler.Domain.Migrations
             modelBuilder.Entity("Scheduler.Domain.Models.PtoSchedule", b =>
                 {
                     b.HasOne("Scheduler.Domain.Models.PtoAnnual", "PtoAnnual")
-                        .WithMany("PtoSchedules")
+                        .WithMany()
                         .HasForeignKey("PtoAnnualId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("PtoAnnual");
-                });
-
-            modelBuilder.Entity("Scheduler.Domain.Models.PtoAnnual", b =>
-                {
-                    b.Navigation("PtoSchedules");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,10 +1,20 @@
 <p-toast></p-toast>
-<div style="color: cornflowerblue;">
-  <h2>
-  Year {{ selectedYear$ | async }}
-</h2>
+<div style="color: #2563eb">
+  <h4>
+    Year {{ selectedYear$ | async }}
+  </h4>
 </div>
-<p-button styleClass="mb-2" label="Add PTO Entry" icon="pi pi-plus" class="mb-2"></p-button>
+
+<p-button 
+  styleClass="mb-2" 
+  label="Add PTO Entry" 
+  icon="pi pi-plus" 
+  class="mb-2"
+  (click)="addPto()"
+></p-button>
+<!-- <i class="fa-regular fa-calendar-plus"></i> -->
+<!-- <button pButton pRipple label="Add PTO Entry" class="p-button-primary mb-2" icon="pi pi-plus"></button> -->
+<!-- <button class="btn btn-primary"><i class="fa-regular fa-calendar-plus">Add PTO Entry</i></button> -->
 
 <ng-template #componentLoading class="d-flex justify-content-center mb-3">
   <div class="w-100 text-center mt-5">
@@ -14,14 +24,17 @@
 
 <div *ngIf="ptoSchedule$ | async as schedule">
 
-  <p-table
+  <p-table 
     *ngIf="schedule; else componentLoading"
-    [value]="schedule" 
+    [value]="schedule"
     styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm" 
     [resizableColumns]="true"
-    [tableStyle]="{ 'min-width': '30rem' }">
+    [tableStyle]="{ 'min-width': '30rem' }" 
+    [scrollable]="true"
+    scrollHeight="calc(100vh - 335px)"
+    >
     <!-- <ng-template pTemplate="caption"> Header </ng-template> -->
-    <ng-template pTemplate="header">
+    <ng-template pTemplate="header" let-columns>
         <tr>
             <th style="width: 5rem;"></th> <!--edit button column-->
             <th pResizableColumn pSortableColumn="ptoDate">
@@ -47,6 +60,14 @@
               Taken
               <p-sortIcon field="isTaken"></p-sortIcon>
             </th>
+            <th pResizableColumn pSortableColumn="isTaken">
+              Burn Down Hrs
+              <p-sortIcon field="isTaken"></p-sortIcon>
+            </th>
+            <th pResizableColumn pSortableColumn="isTaken">
+              Burn Down Days
+              <p-sortIcon field="isTaken"></p-sortIcon>
+            </th>
             <!-- <th pSortableColumn="year">
               Year
               <p-sortIcon field="year"></p-sortIcon>
@@ -55,15 +76,17 @@
         </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-schedule>
+    <ng-template pTemplate="body" let-schedule let-columns="columns">
         <tr>
-          <td>
-            <button type="button" pButton pRipple 
+          <td title="Edit this entry." (click)="editPto(schedule)">
+            <!-- <button type="button" pButton pRipple 
               icon="pi pi-pencil"                 
               class="p-button-sm p-button-raised"
               (click)="editPto(schedule)"   
               >
-            </button>
+            </button> -->
+            <i class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
+            <!-- <p-button styleClass="p-button-sm p-button-raised" icon="pi pi-pencil" class="mb-2" (click)="editPto(schedule)"></p-button> -->
         </td>
             <td>{{ schedule.ptoDate | date: 'MM/dd/yyyy' }}</td>
             <td>{{ schedule.dayOfWeek }}</td>
@@ -79,18 +102,28 @@
                   </ng-template>
               </p-cellEditor>
           </td> -->
-            <td>
-              <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isScheduled, 'text-red-500 pi-times-circle': !schedule.isScheduled }"></i>
+            <td class="max-width td-center">
+              <!-- <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isScheduled, 'text-red-500 pi-times-circle': !schedule.isScheduled }"></i> -->
+              <div class="form-switch" >
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="schedule.isScheduled">
+                <!-- <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label> -->
+              </div>
             </td>
-            <td>
-              <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isTaken, 'text-red-500 pi-times-circle': !schedule.isTaken }"></i>
+            <td class="max-width td-center">
+              <div class="form-switch " >
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="schedule.isTaken">
+              </div>
+              <!-- <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isTaken, 'text-red-500 pi-times-circle': !schedule.isTaken }"></i> -->
             </td>
-            <td>
-              <button type="button" pButton pRipple 
+            <td>{{ schedule.burndownHours }}</td>
+            <td>{{ schedule.burndownDays }}</td>
+            <td title="Delete this entry." (click)="deletePto(schedule)">
+              <!-- <button type="button" pButton pRipple 
                 icon="pi pi-minus"                 
                 class="p-button-sm p-button-danger p-button-raised"      
                 (click)="deletePto(schedule)">
-              </button>
+              </button> -->
+              <i class="fa-solid fa-square-minus" style="font-size: 1.5rem; color:  #ef4444; cursor: pointer; width: 20px;" ></i>
               <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="danger" size="small"></p-button> -->
               <!-- <button type="button" pButton pRipple class="btn btn-danger btn-sm" icon="pi pi-minus"></button> -->
           </td>
@@ -101,9 +134,4 @@
 
 </div>
 
-<ng-template id="exampleModal" let-modal>
-  <!-- Actual modal body content -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <app-add-edit-modal></app-add-edit-modal>
-  </div>
-</ng-template>
+

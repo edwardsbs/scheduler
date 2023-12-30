@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Scheduler.Domain.Models;
+﻿namespace Scheduler.Domain.Models;
 
 public class PtoSchedule
 {
@@ -16,5 +10,24 @@ public class PtoSchedule
     public bool IsTaken { get; set; }
     public int PtoAnnualId { get; set; }
     public PtoAnnual? PtoAnnual { get; internal set; }
+
+    public static PtoSchedule Create(
+            DateTime ptoDate,
+            string reason,
+            float hours,
+            bool isScheduled,
+            bool isTaken,
+            int ptoAnnualId) 
+    {
+        return new PtoSchedule()
+        {
+            PtoDate = ptoDate,
+            Reason = reason,
+            Hours = hours,
+            IsScheduled = isScheduled,
+            IsTaken = isTaken,
+            PtoAnnualId = ptoAnnualId
+        };
+    }
 
 }

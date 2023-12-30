@@ -6,6 +6,8 @@ using Scheduler.Services.Handlers.Contracts;
 using Scheduler.Services.Handlers.Holidays.Queries;
 using Scheduler.Services.Handlers.Pto.Queries;
 using Scheduler.Services.Handlers.Repositories.Holidays;
+using Scheduler.Services.Handlers.Pto.Commands;
+using Scheduler.Services.Handlers.Services.PtoAnnualForYear;
 
 namespace Scheduler.Services;
 
@@ -29,11 +31,14 @@ public static class Bootstrapper
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidayDatesHandler).Assembly));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetPtoScheduleByPtoAnnualHandler).Assembly));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetPtoScheduleForYearHandler).Assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(AddPtoHandler).Assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(EditPtoHandler).Assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetPtoAnnualForYearHandler).Assembly));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(GetHolidayDatesFromRepoHandler).Assembly));
 
         //Repositories
         services.AddTransient<IHolidaysRepo, HolidaysRepo>();
-
+        services.AddTransient<IPtoAnnualForYearService, PtoAnnualForYearService>();
 
 
         return services;

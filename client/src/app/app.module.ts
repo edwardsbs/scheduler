@@ -19,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DaysOffModule } from './routes/days-off/days-off.module';
 import { StoreModule } from '@ngrx/store';
 import { daysOffReducer } from './routes/days-off/data-access/store/days-off.reducer';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [	
@@ -45,6 +48,9 @@ import { daysOffReducer } from './routes/days-off/data-access/store/days-off.red
     DaysOffModule,
     HttpClientModule,
     StoreModule.forRoot({ dasyOff: daysOffReducer }, {}),
+    CardModule,
+    TableModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

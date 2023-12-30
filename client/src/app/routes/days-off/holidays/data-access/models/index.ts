@@ -20,3 +20,5 @@ export type Year = {
     yearNumber: number;
     //HolidayDates: HolidayDate[] | null;
 }
+
+export const ptoHoursOptions: number[] = [0, 2, 4, 8]

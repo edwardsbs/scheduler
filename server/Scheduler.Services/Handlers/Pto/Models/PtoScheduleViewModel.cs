@@ -20,6 +20,8 @@ public class PtoScheduleViewModel
     //public PtoAnnual? PtoAnnual { get; set; }
     public int Year { get; set; }
     public string? DayOfWeek { get; set; }
+    public int BurndownHours { get; set; }
+    public double BurndownDays { get; set; }
 
     //public void CreateMappings(Profile config)
     //{

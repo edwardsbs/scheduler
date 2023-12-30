@@ -1,5 +1,8 @@
-﻿using MediatR;
+﻿using Azure.Core;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Scheduler.Domain.Models;
+using Scheduler.Services.Handlers.Pto.Commands;
 using Scheduler.Services.Handlers.Pto.Queries;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -38,6 +41,12 @@ public class PtoController : ControllerBase
         return Ok(await _mediator.Send(new GetPtoScheduleForYearRequest(year)));
     }
 
+    [HttpGet("pto-annual/{year}")]
+    public async Task<ActionResult> GetPtoAnnualForYear(int year)
+    {
+        return Ok(await _mediator.Send(new GetPtoAnnualForYearRequest(year)));
+    }
+
     //// GET api/<PtoController>/5
     //[HttpGet("{id}")]
     //public string GetPtoScheduleByYearId(int id)
@@ -53,10 +62,17 @@ public class PtoController : ControllerBase
     //}
 
     //// POST api/<PtoController>
-    //[HttpPost]
-    //public void Post([FromBody] string value)
-    //{
-    //}
+    [HttpPost("add-pto")]
+    public async Task<ActionResult> AddPto([FromBody] AddPtoRequest request, CancellationToken token)
+    {
+        return Ok(await _mediator.Send(request, token));
+    }
+
+    [HttpPut("edit-pto")]
+    public async Task<ActionResult> EditPto([FromBody] EditPtoRequest request, CancellationToken token)
+    {
+        return Ok(await _mediator.Send(request, token));
+    }
 
     //// PUT api/<PtoController>/5
     //[HttpPut("{id}")]

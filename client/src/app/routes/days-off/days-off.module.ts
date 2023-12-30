@@ -2,42 +2,45 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DaysOffComponent } from './days-off.component';
 import { DaysOffRoutingModule } from './days-off-routing.module';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
 import { HolidaysModule } from './holidays/holidays.module';
 import { HolidaysComponent } from './holidays/holidays.component';
-import {MatTableModule} from '@angular/material/table';
 import { TabViewModule } from 'primeng/tabview';
-import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { PtoComponent } from './pto/pto.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DaysOffStore } from './days-off.store';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PtoStore } from './pto/pto.store';
-import { ButtonModule } from 'primeng/button';
 import { AddEditModalComponent } from './pto/add-edit-modal/add-edit-modal.component';
 import { DialogModule } from 'primeng/dialog';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   imports: [
     CommonModule,
     DaysOffRoutingModule,
-    MatTabsModule,
-    MatIconModule,
     HolidaysModule,
-    MatTableModule,
-    CardModule,
-    TabViewModule,
     TableModule,
+    TabViewModule,
     SelectButtonModule,
     FormsModule,
-    ButtonModule,
+    ReactiveFormsModule,
     DialogModule,
     ToastModule,
+    InputGroupModule,
+    InputGroupAddonModule,
+    CalendarModule,
+    DropdownModule,
+    InputTextModule,
+    InputSwitchModule,
   ],
   declarations: [DaysOffComponent, HolidaysComponent, PtoComponent, AddEditModalComponent],
   providers: [DaysOffStore, PtoStore, DialogService, MessageService]

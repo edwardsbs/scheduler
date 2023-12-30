@@ -13,6 +13,7 @@ export class PtoComponent implements OnInit {
 
   selectedYear$ = this.ptoStore.selectedYear$;
   ptoSchedule$ = this.ptoStore.ptoSchedule$;
+  ptoRemainingHours$ = this.ptoStore.ptoRemainingHours$;
 
   constructor(
     private readonly ptoStore: PtoStore,
@@ -27,5 +28,9 @@ export class PtoComponent implements OnInit {
 
   editPto(pto: PtoSchedule) {
     this.ptoStore.editPto(pto);
+  }
+
+  addPto() {
+    this.ptoStore.addPto();
   }
 }

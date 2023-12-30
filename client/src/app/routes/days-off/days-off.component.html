@@ -1,4 +1,4 @@
-<p-selectButton styleClass="ml-2 mb-1"
+<p-selectButton styleClass="ml-2 mb-1 mt-2"
   [options]="(years$ | async)!" 
   (onOptionClick)="yearSelectionChange($event)"
   optionLabel="yearNumber" 
@@ -6,37 +6,10 @@
   >
 </p-selectButton>
 
-<!-- <mat-tab-group>
-  
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">watch_off</mat-icon>
-      PTO
-    </ng-template>
-    PTO Content Here
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">celebration</mat-icon>
-      Holidays
-    </ng-template>
-    <app-holidays></app-holidays>
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">date_range</mat-icon>
-      Schedule
-    </ng-template>
-    Schecule Content Here
-  </mat-tab>
-</mat-tab-group> -->
-
 <div class="card">
   <p-tabView>
 
-    <p-tabPanel header="Header I" styleClass="p-tabview-panels-override">
+    <p-tabPanel header="Header I"  style="color: #2563eb">
         <ng-template pTemplate="header">
           <i class="fa-regular fa-calendar-check mr-2"></i>
           <!-- <i class="bi bi-calendar2-week mr-2"></i> -->
