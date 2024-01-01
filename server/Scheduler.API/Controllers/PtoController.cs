@@ -2,8 +2,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Scheduler.Domain.Models;
-using Scheduler.Services.Handlers.Pto.Commands;
-using Scheduler.Services.Handlers.Pto.Queries;
+using Scheduler.Services.Handlers.Pto.Schedule.Queries;
+using Scheduler.Services.Handlers.Pto.Schedule.Commands;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scheduler.Services.Handlers.Pto.Models;
+namespace Scheduler.Services.Handlers.Pto.Schedule.Models;
 
 public class PtoScheduleViewModel
 {

@@ -3,14 +3,14 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Scheduler.Domain.Models;
 using Scheduler.Services.Handlers.Contracts;
-using Scheduler.Services.Handlers.Pto.Models;
+using Scheduler.Services.Handlers.Pto.Schedule.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scheduler.Services.Handlers.Pto.Queries;
+namespace Scheduler.Services.Handlers.Pto.Schedule.Queries;
 
 public record GetPtoScheduleForYearRequest(int Year) : IRequest<List<PtoScheduleViewModel>>;
 
@@ -62,7 +62,7 @@ public class GetPtoScheduleForYearHandler : IRequestHandler<GetPtoScheduleForYea
 
         foreach (var pto in ptoWorking)
         {
-            pto.BurndownHours = (availablePtoHours - (int)pto.Hours);
+            pto.BurndownHours = availablePtoHours - (int)pto.Hours;
 
             pto.BurndownDays = (double)(pto.BurndownHours / 8.0);
 

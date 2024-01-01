@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Scheduler.Services.Handlers.Pto.Commands;
+namespace Scheduler.Services.Handlers.Pto.Schedule.Commands;
 
 public record AddPtoRequest(
         DateTime ptoDate,

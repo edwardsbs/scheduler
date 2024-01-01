@@ -3,9 +3,9 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Scheduler.Domain.Models;
 using Scheduler.Services.Handlers.Contracts;
-using Scheduler.Services.Handlers.Pto.Models;
+using Scheduler.Services.Handlers.Pto.Schedule.Models;
 
-namespace Scheduler.Services.Handlers.Pto.Queries;
+namespace Scheduler.Services.Handlers.Pto.Schedule.Queries;
 
 public record GetPtoScheduleByPtoAnnulRequest(int PtoAnnualId) : IRequest<List<PtoScheduleViewModel>>;
 
@@ -21,7 +21,7 @@ public class GetPtoScheduleByPtoAnnualHandler : IRequestHandler<GetPtoScheduleBy
     public async Task<List<PtoScheduleViewModel>> Handle(GetPtoScheduleByPtoAnnulRequest request, CancellationToken cancellationToken)
     {
 
-        var pto =  await _context.PtoSchedule
+        var pto = await _context.PtoSchedule
             .Include(x => x.PtoAnnual)
             .ThenInclude(pa => pa.Year)
             //.SelectMany(x => x.PtoSchedules)

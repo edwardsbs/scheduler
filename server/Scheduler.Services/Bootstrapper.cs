@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Scheduler.Domain;
 using Scheduler.Services.Handlers.Contracts;
 using Scheduler.Services.Handlers.Holidays.Queries;
-using Scheduler.Services.Handlers.Pto.Queries;
 using Scheduler.Services.Handlers.Repositories.Holidays;
-using Scheduler.Services.Handlers.Pto.Commands;
 using Scheduler.Services.Handlers.Services.PtoAnnualForYear;
+using Scheduler.Services.Handlers.Pto.Schedule.Commands;
+using Scheduler.Services.Handlers.Pto.Schedule.Queries;
 
 namespace Scheduler.Services;
 

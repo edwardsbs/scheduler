@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scheduler.Services.Handlers.Pto.Commands;
+namespace Scheduler.Services.Handlers.Pto.Schedule.Commands;
 
 public record EditPtoRequest(
         int ptoScheduleId,
@@ -34,7 +34,7 @@ public class EditPtoHandler : IRequestHandler<EditPtoRequest, Unit>
     public async Task<Unit> Handle(EditPtoRequest request, CancellationToken token)
     {
         var pto = await _context.FindAsync<PtoSchedule>(request.ptoScheduleId, token);
-        
+
         if (pto != null)
         {
             var annualId = 0;
@@ -51,11 +51,12 @@ public class EditPtoHandler : IRequestHandler<EditPtoRequest, Unit>
 
             await _context.SaveChangesAsync(token);
 
-        } else
+        }
+        else
         {
             throw new ArgumentException("PTO Entry was not found.");
         }
-        
+
         return Unit.Value;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Scheduler.Services.Handlers.Repositories.Holidays;
 
-namespace Scheduler.Services.Handlers.Pto.Queries;
+namespace Scheduler.Services.Handlers.Pto.Schedule.Queries;
 
 /// <summary>
 /// Pretending that HolidayDates come from outside database source to 
