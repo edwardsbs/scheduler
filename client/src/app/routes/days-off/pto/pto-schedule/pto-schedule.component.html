@@ -1,0 +1,85 @@
+<p-button 
+    *ngIf="(doesPtoAnnualNeedToBeCreated$ | async)"
+        styleClass="mb-2" 
+        label="Add Annual PTO" 
+        icon="pi pi-plus" 
+        class="mb-2"
+        (click)="addPtoAnnual()"
+      ></p-button>
+      
+<div *ngIf="!(doesPtoAnnualNeedToBeCreated$ | async)" >
+  <!-- <div class="card-body"> -->
+
+    <div class="row" *ngIf="ptoAnnual$ | async as pto">
+
+      <!-- STARTING/BASE PTO -->
+      <div class="col-4 verticalLine">
+        <!-- {{ pto | json }} -->
+          <div class="lh-base">
+            <p class="text-muted fs-5 mb-0 mt-0" >Starting PTO:</p>
+            <!-- <span> -->
+            <label class="text-muted" for="hours">Base PTO Hours: <span class="fw-semibold me-4">{{ pto.ptoHours }}</span></label>
+            <!-- <p class="text-primary fw-semibold fs-5" id="hours"><span>{{ pto.totalPtoHours }}</span></p> -->
+            <!-- </span> -->
+            <label class="text-muted" for="hours">Carried Over: <span class="fw-semibold me-4">{{ pto.carriedOverHours }}</span></label>
+          </div>
+          <div class="lh-base">
+            <label class="text-muted" for="hours">Comp Time: <span class="fw-semibold fs-6 me-4">{{ pto.compTimeHours }}</span></label>
+            <label class="text-muted" for="hours">Purchased: <span class="fw-semibold fs-6 me-4">{{ pto.purchasedHours }}</span></label>
+            <label class="text-muted" for="hours">Floating: <span class="fw-semibold fs-6 me-4">{{ pto.floatingHours }}</span></label>
+          </div>
+
+          <div class="bg-warning text-dark bg-opacity-25">  
+            <label class="text-muted me-2" for="hours">Total PTO: <span class="text-primary fw-semibold fs-5 ms-1">{{ pto.totalPtoHours }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-primary fw-semibold fs-5 ms-2">{{ (pto.totalPtoHours / 8.0) }}</span> days</label>
+          </div>
+      </div>
+
+      <!-- SCHEDULED -->
+      <div class="col-4 verticalLine">
+        <div class="lh-base">
+          <p class="text-muted fs-5 mb-0 mt-0" >Scheduled PTO:</p>
+          <div class="bg-success text-dark bg-opacity-10">
+            <label class="text-muted me-2" for="hours">Planned: <span class="text-muted fw-semibold fs-6 ms-1">{{ ptoPlanned$ | async }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-muted fw-semibold fs-6 ms-2">{{ ((ptoPlanned$ | async)! / 8.0) }}</span> days</label>
+          </div>         
+          <div>
+            <label class="text-muted me-2" for="hours">On HR Calendar: <span class="text-primary fw-semibold fs-6 ms-1">{{ ptoOnHrCalendar$ | async }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-primary fw-semibold fs-6 ms-2">{{ ((ptoOnHrCalendar$ | async)! / 8.0) }}</span> days</label>
+          </div>
+          <div class="bg-success bg-gradient text-dark bg-opacity-25">
+            <label class="text-muted me-2" for="hours">Remaining: <span class="text-success fw-semibold fs-5 ms-1">{{ ptoPlannedRemaining$ | async }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-success fw-semibold fs-5 ms-2">{{ ((ptoPlannedRemaining$ | async)! / 8.0) }}</span> days</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAKEN -->
+      <div class="col-4 verticalLine">
+        <div class="lh-base">
+          <p class="text-muted fs-5 mb-0 mt-0" >Actual PTO Taken:</p>
+          <div>
+            <label class="text-muted me-2" for="hours">Taken: <span class="text-primary fw-semibold fs-6 ms-1">{{ ptoIsTaken$ | async }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-primary fw-semibold fs-6 ms-2">{{ ((ptoIsTaken$ | async)! / 8.0) }}</span> days</label>
+          </div>
+          <div class="bg-dark text-white bg-gradient">
+            <label class="text-white me-2" for="hours">Remaining: <span class="fw-semibold fs-6 ms-1">{{ ptoActualRemaining$ | async }}</span> hours</label>
+            <label class="text-white" for="hours"> | <span class="fw-semibold fs-6 ms-2">{{ ((ptoActualRemaining$ | async)! / 8.0) }}</span> days</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- REMAINING -->
+      <!-- <div class="col-2 verticalLine">
+          <p class="text-muted fs-5  mb-0 mt-0" for="remaining">Remaining PTO:</p>
+          <span class="fw-semibold fs-3" style="color: green;" id="remaining">
+            <span>{{ ptoRemainingHours$ | async | json }} <span class="text-muted fw-light fs-4">hrs</span> <span class="text-muted fw-light fs-4 ms-2"> | </span>
+              <span class="fw-semibold fs-3 ms-2" style="color: green;" id="remaining">{{ ptoRemainingDays$ | async | json }} <span class="text-muted fw-light fs-4">days</span></span>
+            </span>
+          </span>
+      </div> -->
+
+    </div>  
+    
+  <!-- </div> -->
+</div>

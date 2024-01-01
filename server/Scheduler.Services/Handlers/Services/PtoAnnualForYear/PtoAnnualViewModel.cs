@@ -13,5 +13,6 @@ public class PtoAnnualViewModel
     public float? PtoDays { get; set; }
     public int YearId { get; set; }
     public int Year { get; set; }
+    public int TotalPtoHours { get; set; }
 
 }

@@ -1,0 +1,106 @@
+<!-- <div  style="height: 400px;"> -->
+
+  <form [formGroup]="ptoAnnualForm">
+
+    <!-- FISRT ROW -->
+    <div class="row"> 
+      
+      <!-- PTO Hours -->
+      <div class="col-2 hours-width">
+        <div class="flex flex-column gap-1">
+          <label for="ptoHours">PTO Hours</label>
+          <input pInputText id="ptoHours" aria-describedby="ptoHours-help" formControlName="ptoHours" />
+        </div>
+        <div class="form-text ms-2 mb-3"             
+            >{{ (+(ptoAnnualForm.controls.ptoHours.value?? 0) / 8.0) }} days
+        </div>
+      </div>
+
+      <!-- carried over -->
+      <div class="col-2 hours-width">
+        <div class="flex flex-column gap-1">
+          <label for="carryover">Hours Carried Over</label>
+          <input pInputText id="carryover" aria-describedby="reason-help" formControlName="carriedOverHours" />
+        </div>
+        <div class="form-text ms-2 mb-3"             
+            >{{ (+(ptoAnnualForm.controls.carriedOverHours.value?? 0) / 8.0) }} days
+        </div>
+      </div>
+           
+    </div>
+
+
+    <!-- 2ND ROW -->
+    <!-- comp time  -->
+    <div class="row">
+      <div class="col-2 hours-width">
+        <div class="flex flex-column gap-1">
+          <label for="compTimeHours">Comp Time</label>
+          <input pInputText id="compTimeHours" aria-describedby="compTimeHours-help" formControlName="compTimeHours" />
+        </div>
+        <div class="form-text ms-2 mb-3"             
+            >{{ (+(ptoAnnualForm.controls.compTimeHours.value?? 0) / 8.0) }} days
+        </div>
+      </div>
+
+      <!-- purchased -->
+      <div class="col-2 hours-width">
+        <div class="flex flex-column gap-1">
+          <label for="ptoHours">Purchased Hours</label>
+          <input pInputText id="ptoHours" aria-describedby="ptoHours-help" formControlName="purchasedHours" />
+        </div>
+        <div class="form-text ms-2 mb-3"             
+            >{{ (+(ptoAnnualForm.controls.purchasedHours.value?? 0) / 8.0) }} days
+        </div>
+      </div>
+
+      <!-- floating -->
+      <div class="col-2 hours-width">
+        <div class="flex flex-column gap-1">
+          <label for="ptoHours">Floating Hours</label>
+          <input pInputText id="ptoHours" aria-describedby="ptoHours-help" formControlName="floatingHours" />
+        </div>
+        <div class="form-text ms-2 mb-3"             
+            >{{ (+(ptoAnnualForm.controls.floatingHours.value?? 0) / 8.0) }} days
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- 3RD ROW -->
+    <!-- total hours -->
+
+    <!-- <div>
+      <label class="text-muted me-2" for="hours">On HR Calendar: <span class="text-primary fw-semibold fs-6 ms-1">{{ ptoOnHrCalendar$ | async }}</span> hours</label>
+      <label class="text-muted" for="hours"> | <span class="text-primary fw-semibold fs-6 ms-2">{{ ((ptoOnHrCalendar$ | async)! / 8.0) }}</span> days</label>
+    </div> -->
+    <div class="bg-success bg-gradient text-dark bg-opacity-25">
+  <label class="text-muted me-2" for="hours">Total PTO: <span class="text-success fw-semibold fs-5 ms-1">{{ calcTotalHours() }}</span> hours</label>
+      <label class="text-muted" for="hours"> | <span class="text-success fw-semibold fs-5 ms-2">{{ (calcTotalHours() / 8.0) }}</span> days</label>
+    </div>
+
+  </form>
+<!-- </div> -->
+
+
+<!-- FOOTER -->
+<div>
+<hr class="mt-3 mb-3" style="width:98%;text-align:center;" color="gainsboro" size=".5">
+<div class="flex w-full justify-content-end mt-3">
+  <p-button type="button" 
+      class="mr-2"
+      label="Cancel" 
+      icon="pi pi-times" 
+      (click)="closeDialog({ buttonType: 'Cancel', summary: 'No Product Selected' })">
+  </p-button>
+  <p-button type="button" 
+      label="Save" 
+      icon="pi pi-check" 
+      (click)="saveChanges({ buttonType: 'Save', summary: 'Saved Changes' })">
+  </p-button>
+</div>
+
+
+
+

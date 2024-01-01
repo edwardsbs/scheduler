@@ -43,7 +43,7 @@ public class GetPtoScheduleForYearHandler : IRequestHandler<GetPtoScheduleForYea
 
         var ptoSchedule = mapper.Map<List<PtoScheduleViewModel>>(pto);
 
-        var ptoAnnual = pto[0].PtoAnnual;
+        var ptoAnnual = pto.Count > 0 ? pto[0].PtoAnnual : null;
 
         if (ptoAnnual != null)
         {

@@ -33,25 +33,24 @@ export type NewPto = Pick<PtoSchedule,
     | 'isTaken'
 > 
 
-export class PtoScheduleMethods {
-    value: PtoSchedule;
- 
-    constructor(value: PtoSchedule) {
-        this.value = value;
-    }
- 
-    addDayOfWeek(): PtoSchedule {
-        return {
-            ...this.value,
-            dayOfWeek: formatDate(this.value.ptoDate, 'EEEE', 'en-US').toString()
-        }
-    }
-
-    // isSome(): boolean {
-    //     return this.value != null;  
-    // } 
- 
-    // isNone(): boolean {
-    //     return !this.isSome();
-    // }
+export type PtoAnnual = {
+    ptoAnnualId: number;
+    ptoHours: number;
+    carriedOverHours: number;
+    purchasedHours: number;
+    compTimeHours: number;
+    floatingHours: number;
+    ptoDays: number | null;
+    yearId: number;
+    year: number;
+    totalPtoHours: number;
 }
+
+export type NewPtoAnnual = Pick<PtoAnnual, 
+    'ptoHours' 
+    | 'carriedOverHours'
+    | 'purchasedHours'
+    | 'compTimeHours'
+    | 'floatingHours'
+    | 'year'
+> 

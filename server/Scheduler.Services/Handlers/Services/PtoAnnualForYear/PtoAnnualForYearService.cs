@@ -31,6 +31,8 @@ class PtoAnnualForYearService : IPtoAnnualForYearService
             var config = new MapperConfiguration(cfg => cfg.CreateMap<PtoAnnual, PtoAnnualViewModel>()
            .ForMember(x => x.Year, opt =>
                opt.MapFrom(src => src.Year.YearNumber))
+           .ForMember(x => x.TotalPtoHours, opt =>
+               opt.MapFrom(src => (src.PtoHours + src.CarriedOverHours + src.CompTimeHours + src.PurchasedHours + src.FloatingHours)))
            );
 
             var mapper = new Mapper(config);

@@ -1,24 +1,25 @@
-<p-selectButton styleClass="ml-2 mb-1 mt-2"
+<!-- <p-selectButton styleClass="ml-2 mb-1 mt-2"
   [options]="(years$ | async)!" 
   (onOptionClick)="yearSelectionChange($event)"
   optionLabel="yearNumber" 
   optionValue="yearNumber"
   >
-</p-selectButton>
+</p-selectButton> -->
 
 <div class="card">
-  <p-tabView>
+  <p-tabView styleClass="m-0">
 
-    <p-tabPanel header="Header I"  style="color: #2563eb">
+    <p-tabPanel styleClass="m-0 p-0">
         <ng-template pTemplate="header">
           <i class="fa-regular fa-calendar-check mr-2"></i>
           <!-- <i class="bi bi-calendar2-week mr-2"></i> -->
+         
             <span>PTO</span>
         </ng-template>
         <app-pto></app-pto>
     </p-tabPanel>
 
-    <p-tabPanel header="Header III">
+    <p-tabPanel >
         <ng-template pTemplate="header">
             <!-- <i class="pi pi-search mr-1"></i> -->
             <i class="fa-regular fa-calendar-days mr-2"></i>
@@ -30,7 +31,7 @@
         </p>
     </p-tabPanel>
     
-    <p-tabPanel  header="Header II">
+    <p-tabPanel >
       <ng-template pTemplate="header">
         <i class="fa-solid fa-gift mr-2"></i>
           <span>Holidays</span>

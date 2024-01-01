@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PtoAnnualComponent } from './pto-annual.component';
+import { AddEditAnnualModalComponent } from './add-edit-annual-modal.component';
 
-describe('PtoAnnualComponent', () => {
-  let component: PtoAnnualComponent;
-  let fixture: ComponentFixture<PtoAnnualComponent>;
+describe('AddEditModalComponent', () => {
+  let component: AddEditAnnualModalComponent;
+  let fixture: ComponentFixture<AddEditAnnualModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PtoAnnualComponent ]
+      declarations: [ AddEditAnnualModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PtoAnnualComponent);
+    fixture = TestBed.createComponent(AddEditAnnualModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
