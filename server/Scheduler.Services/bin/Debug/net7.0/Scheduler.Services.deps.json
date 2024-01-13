@@ -13,7 +13,8 @@
           "MediatR": "12.2.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.14",
-          "Scheduler.Domain": "1.0.0"
+          "Scheduler.Domain": "1.0.0",
+          "Scheduler.Models": "1.0.0"
         },
         "runtime": {
           "Scheduler.Services.dll": {}
@@ -615,6 +616,11 @@
         "runtime": {
           "Scheduler.Domain.dll": {}
         }
+      },
+      "Scheduler.Models/1.0.0": {
+        "runtime": {
+          "Scheduler.Models.dll": {}
+        }
       }
     }
   },
@@ -1038,6 +1044,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "Scheduler.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Scheduler.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

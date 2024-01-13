@@ -40,30 +40,26 @@ export class PtoHttpService {
     )
   }
 
-  addPto(pto: NewPto): Observable<void> {
+  addPto(pto: NewPto[]): Observable<void> {
     return this.http.post<void>(
       `${this.apiPath}/add-pto`,
       {
-        hours: pto.hours,
-        isScheduled: pto.isScheduled,
-        isTaken: pto.isTaken,
-        ptoDate: pto.ptoDate,
-        reason: pto.reason,
+        newPtos: pto,
       }
     )
   }
 
   addPtoAnnual(pto: NewPtoAnnual): Observable<PtoAnnual> {
-    console.log('frm post', pto)
+    console.log('http call', pto)
     return this.http.post<PtoAnnual>(
       `${this.apiPath}/add-pto-annual`,
       {
+        year: pto.year,
         ptoHours: pto.ptoHours,
         carriedOverHours: pto.carriedOverHours,
-        purchasedHours: pto.purchasedHours,
         compTimeHours: pto.compTimeHours,
+        purchasedHours: pto.purchasedHours,
         floatingHours: pto.floatingHours,
-        year: pto.year,
       }
     )
   }

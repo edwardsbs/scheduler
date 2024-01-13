@@ -10,6 +10,7 @@ import { Year } from './data-access/models';
 export class DaysOffComponent implements OnInit {
 
   years$ = this.store.years$;
+  selectedYear$ = this.store.selectedYear$;
   year: Year = { yearNumber: 2022 } // = this.store.selectedYear$;
   
   constructor(
@@ -20,9 +21,15 @@ export class DaysOffComponent implements OnInit {
     // this.year = { yearNumber: 2023 }
   }
 
+  // yearSelectionChange(event: any) {
+  //   console.log('year', event.option)
+  //   this.store.setSelectedYear(event.option.yearNumber);
+  // }
   yearSelectionChange(event: any) {
-    console.log('year', event.option)
-    this.store.setSelectedYear(event.option.yearNumber);
+    // console.log('year', new Date(event).getFullYear())
+    console.log('year', event);
+    // this.activeYear = event;
+    // this.store.setSelectedYear(new Date(event).getFullYear());
+    this.store.setSelectedYear(event);
   }
-
 }

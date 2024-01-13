@@ -12,13 +12,15 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Scheduler.Services.Handlers.Pto.Schedule.Commands;
 
-public record AddPtoRequest(
-        DateTime ptoDate,
-        string reason,
-        float hours,
-        bool isScheduled,
-        bool isTaken
-    ) : IRequest<Unit>;
+public record NewPtoAdd(
+    DateTime ptoDate,
+    string reason,
+    float hours,
+    bool isScheduled,
+    bool isTaken
+ );
+
+public record AddPtoRequest(List<NewPtoAdd> NewPtos) : IRequest<Unit>;
 public class AddPtoHandler : IRequestHandler<AddPtoRequest, Unit>
 {
     private readonly ISchedulerContext _context;
@@ -33,13 +35,18 @@ public class AddPtoHandler : IRequestHandler<AddPtoRequest, Unit>
     public async Task<Unit> Handle(AddPtoRequest request, CancellationToken token)
     {
         var annualId = 0;
-        var annual = await _annualService.GetPtoAnnual(request.ptoDate.Year, token);
+        var annual = await _annualService.GetPtoAnnual(request.NewPtos[0].ptoDate.Year, token);
 
         if (annual != null) annualId = annual.PtoAnnualId;
+        //TO DO: add a check so if the Year does change, the new annual Id can be retrieved.  This is so a request can be wrapped around the 
+        // end of a year and into the new year.
 
-        var pto = PtoSchedule.Create(request.ptoDate, request.reason, request.hours, request.isScheduled, request.isTaken, annualId);
+        foreach (var ptoEntry in request.NewPtos) 
+        {
+            var pto = PtoSchedule.Create(ptoEntry.ptoDate, ptoEntry.reason, ptoEntry.hours, ptoEntry.isScheduled, ptoEntry.isTaken, annualId);
 
-        await _context.AddAsync(pto);
+            await _context.AddAsync(pto);        
+        }
 
         await _context.SaveChangesAsync(token);
 

@@ -1047,6 +1047,16 @@
         "runtime": {
           "bin/placeholder/Scheduler.Domain.dll": {}
         }
+      },
+      "Scheduler.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Scheduler.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Scheduler.Models.dll": {}
+        }
       }
     }
   },
@@ -2784,6 +2794,11 @@
       "type": "project",
       "path": "../Scheduler.Domain/Scheduler.Domain.csproj",
       "msbuildProject": "../Scheduler.Domain/Scheduler.Domain.csproj"
+    },
+    "Scheduler.Models/1.0.0": {
+      "type": "project",
+      "path": "../Scheduler.Models/Scheduler.Models.csproj",
+      "msbuildProject": "../Scheduler.Models/Scheduler.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2793,7 +2808,8 @@
       "MediatR >= 12.2.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.1.0",
       "Microsoft.EntityFrameworkCore.Relational >= 7.0.14",
-      "Scheduler.Domain >= 1.0.0"
+      "Scheduler.Domain >= 1.0.0",
+      "Scheduler.Models >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2830,6 +2846,9 @@
           "projectReferences": {
             "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
               "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj"
+            },
+            "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj": {
+              "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj"
             }
           }
         }

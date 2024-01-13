@@ -5,7 +5,7 @@ using Scheduler.Domain.Models;
 using Scheduler.Services.Handlers.Contracts;
 using Scheduler.Services.Handlers.Services.PtoAnnualForYear;
 
-namespace Scheduler.Services.Handlers.Pto.Schedule.Queries;
+namespace Scheduler.Services.Handlers.Pto.Annual.Queries;
 
 public record GetPtoAnnualForYearRequest(int Year) : IRequest<PtoAnnualViewModel>;
 public class GetPtoAnnualForYearHandler : IRequestHandler<GetPtoAnnualForYearRequest, PtoAnnualViewModel>

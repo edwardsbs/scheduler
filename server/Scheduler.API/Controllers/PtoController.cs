@@ -3,7 +3,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Scheduler.Domain.Models;
 using Scheduler.Services.Handlers.Pto.Schedule.Queries;
+using Scheduler.Services.Handlers.Pto.Annual.Queries;
 using Scheduler.Services.Handlers.Pto.Schedule.Commands;
+using Scheduler.Services.Handlers.Pto.Annual.Commands;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -70,6 +72,12 @@ public class PtoController : ControllerBase
 
     [HttpPut("edit-pto")]
     public async Task<ActionResult> EditPto([FromBody] EditPtoRequest request, CancellationToken token)
+    {
+        return Ok(await _mediator.Send(request, token));
+    }
+
+    [HttpPost("add-pto-annual")]
+    public async Task<ActionResult> AddPtoAnnual([FromBody] AddPtoAnnualRequest request, CancellationToken token)
     {
         return Ok(await _mediator.Send(request, token));
     }

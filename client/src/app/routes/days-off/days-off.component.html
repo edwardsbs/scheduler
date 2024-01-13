@@ -7,13 +7,24 @@
 </p-selectButton> -->
 
 <div class="card">
+  <div class="row m-0 p-0 " style="color: #2563eb">
+    <div class="col-1 ms-0 me-4 p-0 mt-4 " style="width: 75px;">
+    <ul class="list-group " *ngFor="let year of (years$ | async)" >
+      <li class="list-group-item borderless"
+        [ngClass]="year.yearNumber === (selectedYear$ | async)? 'active': ''" 
+        (click)="yearSelectionChange(year.yearNumber)" 
+        style="cursor: pointer;" 
+        >{{ year.yearNumber }}</li>
+    </ul>
+  </div>
+
+  <div class="col">
   <p-tabView styleClass="m-0">
 
     <p-tabPanel styleClass="m-0 p-0">
         <ng-template pTemplate="header">
           <i class="fa-regular fa-calendar-check mr-2"></i>
-          <!-- <i class="bi bi-calendar2-week mr-2"></i> -->
-         
+          <!-- <i class="bi bi-calendar2-week mr-2"></i> -->         
             <span>PTO</span>
         </ng-template>
         <app-pto></app-pto>
@@ -40,4 +51,7 @@
   </p-tabPanel>
 
   </p-tabView>
+
+</div>
+</div>
 </div>

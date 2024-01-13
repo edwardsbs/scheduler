@@ -10,3 +10,21 @@
 // p-table {
 //     height:  calc(100vh - $header-height) !important;
 //   }
+
+li.borderless { border: 0 none; }
+
+.list-group-item.active,
+.list-group-item.active:hover {
+
+//   background-color:#626567;
+  background-color:#2d2d2d;
+//   border-top-left-radius: 30%;
+//   border-bottom-color: red;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-bottom-left-radius: 0px;
+//   box-shadow: inset;
+//   border: 2px !important;
+//   border-color: blueviolet !important;
+}

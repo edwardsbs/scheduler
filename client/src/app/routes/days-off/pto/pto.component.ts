@@ -15,6 +15,7 @@ export class PtoComponent implements OnInit {
   selectedYear$ = this.ptoStore.selectedYear$;
   ptoSchedule$ = this.ptoStore.ptoSchedule$;  
   years$ = this.store.years$;
+  activeYear = 0;
 
   constructor(
     private readonly ptoStore: PtoStore,
@@ -36,10 +37,13 @@ export class PtoComponent implements OnInit {
     this.ptoStore.addPto();
   }
 
-  yearSelectionChange(event: any) {
-    console.log('year', new Date(event).getFullYear())
-    this.store.setSelectedYear(new Date(event).getFullYear());
-  }
+  // yearSelectionChange(event: any) {
+  //   // console.log('year', new Date(event).getFullYear())
+  //   console.log('year', event);
+  //   this.activeYear = event;
+  //   // this.store.setSelectedYear(new Date(event).getFullYear());
+  //   this.store.setSelectedYear(event);
+  // }
 
   toggleIsScheduled(schedule: PtoSchedule) {
     const sched = {

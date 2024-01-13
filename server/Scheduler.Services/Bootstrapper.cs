@@ -8,6 +8,8 @@ using Scheduler.Services.Handlers.Repositories.Holidays;
 using Scheduler.Services.Handlers.Services.PtoAnnualForYear;
 using Scheduler.Services.Handlers.Pto.Schedule.Commands;
 using Scheduler.Services.Handlers.Pto.Schedule.Queries;
+using Scheduler.Services.Handlers.Pto.Annual.Queries;
+using Scheduler.Services.Handlers.Services.YearService;
 
 namespace Scheduler.Services;
 
@@ -39,6 +41,7 @@ public static class Bootstrapper
         //Repositories
         services.AddTransient<IHolidaysRepo, HolidaysRepo>();
         services.AddTransient<IPtoAnnualForYearService, PtoAnnualForYearService>();
+        services.AddTransient<IYearModelForYearService, YearModelForYearService>();
 
 
         return services;

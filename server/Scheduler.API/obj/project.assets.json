@@ -1235,6 +1235,16 @@
           "bin/placeholder/Scheduler.Domain.dll": {}
         }
       },
+      "Scheduler.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Scheduler.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Scheduler.Models.dll": {}
+        }
+      },
       "Scheduler.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -1244,7 +1254,8 @@
           "MediatR": "12.2.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.14",
-          "Scheduler.Domain": "1.0.0"
+          "Scheduler.Domain": "1.0.0",
+          "Scheduler.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Scheduler.Services.dll": {}
@@ -3478,6 +3489,11 @@
       "type": "project",
       "path": "../Scheduler.Domain/Scheduler.Domain.csproj",
       "msbuildProject": "../Scheduler.Domain/Scheduler.Domain.csproj"
+    },
+    "Scheduler.Models/1.0.0": {
+      "type": "project",
+      "path": "../Scheduler.Models/Scheduler.Models.csproj",
+      "msbuildProject": "../Scheduler.Models/Scheduler.Models.csproj"
     },
     "Scheduler.Services/1.0.0": {
       "type": "project",

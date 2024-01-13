@@ -18,4 +18,23 @@ public class PtoAnnual
     public int YearId { get; set; }
     public Year Year { get; set; }
     //public ICollection<PtoSchedule>? PtoSchedules { get; internal set; }
+
+    public static PtoAnnual Create(
+        float ptoHours,
+        float carriedOverHours,
+        float compTimeHours,
+        float purchasedHours,
+        float floatingHours,
+        int yearId)
+    {
+        return new PtoAnnual()
+        {
+            PtoHours = ptoHours,
+            CarriedOverHours = carriedOverHours,
+            CompTimeHours = compTimeHours,
+            PurchasedHours = purchasedHours,
+            FloatingHours = floatingHours,
+            YearId = yearId
+        };
+    }
 }

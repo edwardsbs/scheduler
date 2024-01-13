@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AddEditModalComponent } from './add-edit-modal.component';
+import { AddEditPtoModalComponent } from './add-edit-pto-modal.component';
 
 describe('AddEditModalComponent', () => {
-  let component: AddEditModalComponent;
-  let fixture: ComponentFixture<AddEditModalComponent>;
+  let component: AddEditPtoModalComponent;
+  let fixture: ComponentFixture<AddEditPtoModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddEditModalComponent ]
+      declarations: [ AddEditPtoModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddEditModalComponent);
+    fixture = TestBed.createComponent(AddEditPtoModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -11,7 +11,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { DaysOffStore } from './days-off.store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PtoStore } from './pto/pto.store';
-import { AddEditModalComponent } from './pto/add-edit-modal/add-edit-modal.component';
+import { AddEditPtoModalComponent } from './pto/add-edit-pto-modal/add-edit-pto-modal.component';
 import { DialogModule } from 'primeng/dialog';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
@@ -44,7 +44,7 @@ import { AddEditAnnualModalComponent } from './pto/add-edit-annual-modal/add-edi
     InputTextModule,
     InputSwitchModule,
   ],
-  declarations: [DaysOffComponent, HolidaysComponent, PtoComponent, AddEditModalComponent, PtoScheduleComponent, AddEditAnnualModalComponent],
+  declarations: [DaysOffComponent, HolidaysComponent, PtoComponent, AddEditPtoModalComponent, PtoScheduleComponent, AddEditAnnualModalComponent],
   providers: [DaysOffStore, PtoStore, DialogService, MessageService]
 })
 export class DaysOffModule { }

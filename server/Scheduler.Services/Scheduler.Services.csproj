@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Handlers\Holidays\Commands\" />
-    <Folder Include="Handlers\Pto\Annual\" />
+    <Folder Include="Handlers\Pto\Annual\Models\" />
     <Folder Include="Handlers\Scheduler\Commands\" />
   </ItemGroup>
 
@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Scheduler.Domain\Scheduler.Domain.csproj" />
+    <ProjectReference Include="..\Scheduler.Models\Scheduler.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,15 @@
+import { NewPto, NewPtoAnnual, PtoAnnual, PtoSchedule, initialPtoSchedule  } from './data-access/models/index';
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { NewPto, NewPtoAnnual, PtoAnnual, PtoSchedule, initialPtoSchedule } from './data-access/models';
 import { PtoHttpService } from './data-access/services/pto-http.service';
-import { tap, skip, switchMap, Observable, map } from 'rxjs'
+import { tap, skip, switchMap, Observable, map, withLatestFrom } from 'rxjs'
 import { DaysOffStore } from '../days-off.store';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
-import { AddEditModalComponent } from './add-edit-modal/add-edit-modal.component';
+import { AddEditPtoModalComponent } from './add-edit-pto-modal/add-edit-pto-modal.component';
 import { formatDate } from '@angular/common';
 import { AddEditAnnualModalComponent } from './add-edit-annual-modal/add-edit-annual-modal.component';
+import { AddEditMode } from '../data-access/models';
 
 export type PtoStoreState = {
     ptoSchedule: PtoSchedule[],
@@ -39,7 +40,9 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
     }
 
     //SELECTORS
-    ptoSchedule$ = this.select(x => x.ptoSchedule);
+    ptoSchedule$ = this.select(x => 
+        x.ptoSchedule.sort((p1,p2) => p1.ptoDate > p2.ptoDate ? 1 : p1.ptoDate < p2.ptoDate ? -1 : 0)
+    );
 
     selectedYear$ = this.daysOffStore.selectedYear$;
 
@@ -174,9 +177,10 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
         pto$.pipe(
            switchMap((pto: PtoSchedule) => {
 
-            const dialog = this.dialogService.open(AddEditModalComponent, {
+            const dialog = this.dialogService.open(AddEditPtoModalComponent, {
                 data: {
-                    pto: pto
+                    pto: pto,
+                    addOrEditMode: AddEditMode.Edit,
                 },
                 header: `Edit PTO for ${this.convertDateString(new Date(pto.ptoDate))}`,
                 width: '30vw',
@@ -222,9 +226,10 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
         trigger$.pipe(
            switchMap(() => {
 
-            const dialog = this.dialogService.open(AddEditModalComponent, {
+            const dialog = this.dialogService.open(AddEditPtoModalComponent, {
                 data: {
-                    pto: initialPtoSchedule
+                    pto: initialPtoSchedule,
+                    addOrEditMode: AddEditMode.Add,
                 },
                 header: `Add New PTO`,
                 width: '30vw',
@@ -239,26 +244,35 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
            }),
            switchMap((pto) => {
                 if(pto) {
-                    let newPto: NewPto = {
-                        ptoDate: pto.ptoDate,
-                        reason: pto.reason,
-                        hours: pto.hours,
-                        isScheduled: pto.isScheduled,
-                        isTaken: pto.isTaken,
-                    }
+                    let newPtos: NewPto[] = pto.map((p: NewPto) => {
+                        return {
+                            ptoDate: p.ptoDate,
+                            reason: p.reason,
+                            hours: p.hours,
+                            isScheduled: p.isScheduled,
+                            isTaken: p.isTaken,
+                        }
+                    })
 
-                    this.http.addPto(newPto).subscribe(() => {
-                            
-                        const dayOfWeek = formatDate(newPto.ptoDate, 'EEEE', 'en-US').toString()
-                        const ptoWithDayOfWeek = {
-                            ...pto,
-                            dayOfWeek: dayOfWeek
-                        } as PtoSchedule
+                    this.http.addPto(newPtos).subscribe(() => {
+
+                        newPtos.forEach(pto => {
+                            const dayOfWeek = formatDate(pto.ptoDate, 'EEEE', 'en-US').toString()
+                            const ptoWithDayOfWeek = {
+                                ...pto,
+                                dayOfWeek: dayOfWeek
+                            } as PtoSchedule
+    
+                            // return [                                
+                                this.addPtoSchedule(ptoWithDayOfWeek)
+                            // ]
+                            }
+                        )
 
                         return [
-                            this.messageService.add({ severity: 'success', summary: 'PTO Added', detail: pto.reason?? '' }),
-                            this.addPtoSchedule(ptoWithDayOfWeek)
+                            this.messageService.add({ severity: 'success', summary: 'PTO Added', detail: newPtos[0].reason?? '' }),
                         ]
+                            
                     },
                     (err: Error) => {
                         return [
@@ -274,13 +288,14 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
 
     addPtoAnnual = this.effect((trigger$) => 
         trigger$.pipe(
-           switchMap(() => {
+            withLatestFrom(this.daysOffStore.selectedYear$),
+           switchMap(([, yr]) => {
 
             const dialog = this.dialogService.open(AddEditAnnualModalComponent, {
                 data: {
                     annualPto: initialPtoSchedule
                 },
-                header: `Add New Annual PTO `,
+                header: `Add New Annual PTO for ${yr}`,
                 width: '30vw',
                 contentStyle: { overflow: 'auto' },
                 modal: true,
@@ -291,29 +306,36 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
             );
 
            }),
-           switchMap((annual) => {
+           withLatestFrom(this.daysOffStore.selectedYear$),
+           switchMap(([annual, selYr]) => {
+                
                 if(annual) {
                     const newPtoAnnual: NewPtoAnnual = {
-                        ptoHours: annual.ptoHours,
-                        carriedOverHours: annual.carriedOverHours,
-                        purchasedHours: annual.purchasedHours,
-                        compTimeHours: annual.compTimeHours,
-                        floatingHours: annual.floatingHours,
-                        year: annual.year,
+                        ptoHours: +annual.ptoHours,
+                        carriedOverHours: +annual.carriedOverHours,
+                        purchasedHours: +annual.purchasedHours,
+                        compTimeHours: +annual.compTimeHours,
+                        floatingHours: +annual.floatingHours,
+                        year: +selYr,
                     }
+                    console.log('addPtoAnnual', newPtoAnnual)
+                    this.http.addPtoAnnual(newPtoAnnual).subscribe(
+                        (res) => {
 
-                    this.http.addPtoAnnual(newPtoAnnual).pipe(tap((res) => {
+                            console.log('returned Annual PTO Entry', res)
 
-                        return [
-                            this.messageService.add({ severity: 'success', summary: 'Annual PTO Added', detail: annual?.year.toString()?? '' }),
-                            this.updatePtoAnnualState(res)
-                        ]
-                    },
-                    (err: Error) => {
-                        return [
-                            this.messageService.add({ severity: 'error', summary: 'Annual PTO Not Saved', detail: err.message?? '' })
-                        ] 
-                    }))  
+                            return [
+                                this.messageService.add({ severity: 'success', summary: 'Annual PTO Added', detail: selYr.toString()?? '' }),
+                                this.updatePtoAnnualState(res)
+                            ]
+                        },
+                        (err: Error) => {
+                            return [
+                                this.messageService.add({ severity: 'error', summary: 'Annual PTO Not Saved', detail: err.message?? '' })
+                            ] 
+                        }
+                    )
+                     
                 }
 
                 return []
@@ -344,7 +366,7 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
                 burndownHours: hours,
                 burndownDays: (hours / 8.0),
             }
-        })
+        }).sort((p1,p2) => p1.ptoDate > p2.ptoDate ? 1 : p1.ptoDate < p2.ptoDate ? -1 : 0)
     }
 
 

@@ -11,7 +11,7 @@ body { margin: 0;  }
 
 .card {
     // background: var(--surface-card);
-    padding-left: 1rem;
+    padding-left: 0rem;
     padding-right: 1rem;
     border-radius: 10px;
     margin-bottom: 0rem;
@@ -29,6 +29,7 @@ body { margin: 0;  }
 .p-tabview .p-tabview-panels {
     // background: #ffffff;
     padding-top: 0rem !important; ; 
+    padding-left: 0rem !important; ; 
     // border: 0 none;
     // color: #4b5563;
     // border-bottom-right-radius: 6px;

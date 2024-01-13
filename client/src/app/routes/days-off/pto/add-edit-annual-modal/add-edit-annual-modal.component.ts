@@ -20,7 +20,7 @@ export class AddEditAnnualModalComponent implements OnInit {
     // year: [0], 
   })
 
-  year = 0;
+  // year = 0;
 
   // hours = ptoHoursOptions;
   // selectedDayOfWeek = "";
@@ -37,16 +37,16 @@ export class AddEditAnnualModalComponent implements OnInit {
     const annual: PtoAnnual = this.dialogConfig.data.annual;
 
     this.ptoAnnualForm.patchValue({
-      ptoAnnualId: annual.ptoAnnualId?? undefined,
-      ptoHours: annual.ptoHours,
-      carriedOverHours: annual.carriedOverHours,
-      purchasedHours: annual.purchasedHours,
-      compTimeHours: annual.compTimeHours,
-      floatingHours: annual.floatingHours,
+      ptoAnnualId: annual?.ptoAnnualId?? undefined,
+      ptoHours: annual?.ptoHours?? 0,
+      carriedOverHours: annual?.carriedOverHours?? 0,
+      purchasedHours: annual?.purchasedHours?? 0,
+      compTimeHours: annual?.compTimeHours?? 0,
+      floatingHours: annual?.floatingHours?? 0,
       // year: annual.year,
     })
 
-    this.year = annual.year;
+    // this.year = annual.year;
 
     // this.getDayOfWeek(new Date(annual.ptoDate));
 
@@ -59,7 +59,7 @@ export class AddEditAnnualModalComponent implements OnInit {
   saveChanges(data: any) {
     const annualEntry = this.ptoAnnualForm.value;
     // this.pto.reason = 'shut up'
-    // console.log(this.dialogConfig.data.pto)
+    console.log('saveChanges', annualEntry)
     this.dialog.close(annualEntry);
   }
 

@@ -13,3 +13,5 @@ C:\Users\bsedw\repos\scheduler\server\Scheduler.Services\obj\Debug\net7.0\ref\Sc
 C:\Users\bsedw\repos\scheduler\server\Scheduler.Services\bin\Debug\net7.0\Scheduler.Domain.dll
 C:\Users\bsedw\repos\scheduler\server\Scheduler.Services\bin\Debug\net7.0\Scheduler.Domain.pdb
 C:\Users\bsedw\repos\scheduler\server\Scheduler.Services\obj\Debug\net7.0\Scheduler.Services.csproj.CopyComplete
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Services\bin\Debug\net7.0\Scheduler.Models.dll
+C:\Users\bsedw\repos\scheduler\server\Scheduler.Services\bin\Debug\net7.0\Scheduler.Models.pdb
