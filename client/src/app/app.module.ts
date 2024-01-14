@@ -4,11 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatButtonModule } from '@angular/material/button';
 import { HolidaysModule } from './routes/days-off/holidays/holidays.module';
 import { HomeDashboardModule } from './routes/home-dashboard/home-dashboard.module';
 import { TimeTrackingModule } from './routes/time-tracking/time-tracking.module';
@@ -22,6 +17,7 @@ import { daysOffReducer } from './routes/days-off/data-access/store/days-off.red
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { StyleClassModule } from 'primeng/styleclass';
 
 @NgModule({
   declarations: [	
@@ -37,11 +33,6 @@ import { ButtonModule } from 'primeng/button';
     RouterLink,
     RouterLinkActive,
     SidenavModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDividerModule,
     HolidaysModule,
     HomeDashboardModule,
     TimeTrackingModule,
@@ -51,6 +42,7 @@ import { ButtonModule } from 'primeng/button';
     CardModule,
     TableModule,
     ButtonModule,
+    StyleClassModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

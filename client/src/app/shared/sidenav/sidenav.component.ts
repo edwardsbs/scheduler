@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Sidebar } from 'primeng/sidebar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +14,10 @@ export class SidenavComponent implements OnInit {
   title = 'Scheduler';
   
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
+  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
   
+  sidebarVisible: boolean = false;
+
   constructor(
     private observer: BreakpointObserver,
     private readonly router: Router
@@ -37,5 +41,9 @@ export class SidenavComponent implements OnInit {
   public onSelect(ev: string): void {
     this.router.navigate(['./scheduler/' + ev]);
 }
+
+  closeCallback(e: any): void {
+    this.sidebarRef.close(e);
+  }  
 
 }

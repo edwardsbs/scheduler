@@ -9,11 +9,14 @@ mat-toolbar {
     background: #2d2d2d;
     color: white;
     height: $toolbar-height;
+    font-size:21px;
   }
 
   mat-sidenav-container {
     height:  calc(100vh - $toolbar-height) !important;
   }
+
+ 
 
   // .md-sidenav-content {
   //   display: flex !important;
@@ -31,9 +34,31 @@ mat-toolbar {
     text-align: center;
   }
 
-  .nav-text {
+  .p-button.p-button-text {
+    background-color: transparent;
     color: white;
-  }
+    border-color: transparent;
+}
+
+.pi.pi-bars.p-button-icon {
+  background-color: transparent;
+  color: white;
+  border-color: transparent;
+}
+
+  // nav-text {
+  //   color: white;  
+  //   background-color: white;
+  //   // text-color: white;
+  //   background: red;
+  //   fore-color: white;
+  //   icon-color: white;
+  // }
+
+  // .nav-text {
+  //   background-color: white;
+  //   text-color: white;
+  // }
   
 
   // .content {

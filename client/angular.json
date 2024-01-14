@@ -29,10 +29,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [              
-              "src/styles.scss",                           
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+            "styles": [ 
+              "src/custom.scss",
+              "src/styles.scss"                            
             ],
             "scripts": [
               
@@ -96,10 +95,8 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [              
-              "src/styles.scss",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+            "styles": [   
+              
             ],
             "scripts": [
               
