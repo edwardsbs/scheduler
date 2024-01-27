@@ -32,6 +32,12 @@ public class HolidaysController : ControllerBase
         return Ok(await _mediator.Send(new GetHolidayDatesRequest()));
     }
 
+    [HttpGet("all-holiday-dates/{year}")]
+    public async Task<ActionResult> GetAllHolidayDates(int year)
+    {
+        return Ok(await _mediator.Send(new GetHolidaysForYearRequest(year)));
+    }
+
     // GET: api/<HolidaysController>
     /// <summary>
     /// Pretending that HolidayDates come from outside database source to 
