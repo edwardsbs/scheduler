@@ -33,7 +33,7 @@ public class HolidaysController : ControllerBase
     }
 
     [HttpGet("all-holiday-dates/{year}")]
-    public async Task<ActionResult> GetAllHolidayDates(int year)
+    public async Task<ActionResult> GetAllHolidayDatesForYear(int year)
     {
         return Ok(await _mediator.Send(new GetHolidaysForYearRequest(year)));
     }
