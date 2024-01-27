@@ -16,6 +16,7 @@ export class PtoComponent implements OnInit {
   ptoSchedule$ = this.ptoStore.ptoSchedule$;  
   years$ = this.store.years$;
   activeYear = 0;
+  showAddPTOEntry$ = this.ptoStore.showAddPTOEntry$;
 
   constructor(
     private readonly ptoStore: PtoStore,

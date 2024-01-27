@@ -43,6 +43,7 @@
       ></p-calendar> -->
       
       <p-button 
+        *ngIf="showAddPTOEntry$ | async"
         styleClass="mb-2" 
         label="Add PTO Entry" 
         icon="pi pi-plus" 

@@ -64,7 +64,8 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
     ptoAnnual$ = this.select(x => x.ptoAnnual);
 
     doesPtoAnnualNeedToBeCreated$ = this.select(x => x.ptoAnnual?.ptoAnnualId === 0);
-
+    
+    showAddPTOEntry$ = this.select(x => x.ptoAnnual?.ptoAnnualId !== 0)
 
     ptoPlanned$ = this.select(
         this.ptoSchedule$,
