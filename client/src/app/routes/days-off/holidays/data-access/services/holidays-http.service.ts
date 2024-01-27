@@ -34,6 +34,12 @@ export class HolidaysHttpService {
     
     // return results
   }
+  
+  getAllHolidayDatesForYear(year: number): Observable<HolidayDate[]> {
+    return  this.http.get<HolidayDate[]>(
+      `${this.apiPath}/all-holiday-dates/${year}`
+    ) 
+  }
 
   getAllHolidays(): Observable<Holiday[]> {
 

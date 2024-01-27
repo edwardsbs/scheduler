@@ -8,6 +8,7 @@ export type Holiday = {
 
 export type HolidayDate = {
     holidayDateId: number;
+    holidayName: string;
     observeDate: Date | string;
     yearId?: number;
     year?: Year;

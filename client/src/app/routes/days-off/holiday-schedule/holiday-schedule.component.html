@@ -1,0 +1,124 @@
+<p-toast></p-toast>
+  
+  <div class="col">
+
+  <div class="row">
+    <div class="col-2">
+      
+      <div style="color: #2563eb">
+        <h2>
+          Year {{ selectedYear$ | async }}
+        </h2>
+
+      </div>
+      
+      <!-- <p-button 
+        *ngIf="showAddPTOEntry$ | async"
+        styleClass="mb-2" 
+        label="Add PTO Entry" 
+        icon="pi pi-plus" 
+        class="mb-2"
+        (click)="addPto()"
+      ></p-button> -->
+
+    </div>
+
+  </div>
+ 
+<ng-template #componentLoading class="d-flex justify-content-center mb-3">
+  <div class="w-100 text-center mt-5">
+    <span class="k-icon k-i-loading k-icon-xl"></span>Loading...
+  </div>
+</ng-template>
+
+<div *ngIf="holidayDates$ | async as holidays">
+
+  <p-table 
+    *ngIf="holidays; else componentLoading"
+    [value]="holidays"
+    styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm" 
+    [resizableColumns]="true"
+    [tableStyle]="{ 'min-width': '30rem' }" 
+    [scrollable]="true"
+    scrollHeight="calc(100vh - 250px)"
+    >
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th style="width: 5rem;"></th> <!--edit button column-->
+            
+            <th pResizableColumn pSortableColumn="holidayName">
+              Holiday
+              <p-sortIcon field="holidayName"></p-sortIcon>
+
+            <th pResizableColumn pSortableColumn="observeDate">
+              Observe Date
+              <p-sortIcon field="observeDate"></p-sortIcon>
+            </th>
+            
+            <!-- <th pResizableColumn pSortableColumn="reason">
+              Reason
+              <p-sortIcon field="reason"></p-sortIcon>
+            </th>
+            
+            <th pResizableColumn pSortableColumn="hours">
+              Hours
+              <p-sortIcon field="hours"></p-sortIcon>
+            </th>
+            
+            <th pResizableColumn pSortableColumn="isScheduled">
+              Scheduled
+              <p-sortIcon field="isScheduled"></p-sortIcon>
+            </th>
+            
+            <th pResizableColumn pSortableColumn="isTaken">
+              Taken
+              <p-sortIcon field="isTaken"></p-sortIcon>
+            </th>
+            
+            <th pResizableColumn pSortableColumn="isTaken">
+              Burn Down Hrs
+              <p-sortIcon field="isTaken"></p-sortIcon>
+            </th>
+            
+            <th pResizableColumn pSortableColumn="isTaken">
+              Burn Down Days
+              <p-sortIcon field="isTaken"></p-sortIcon>
+            </th> -->
+            
+            <th style="width: 5rem;"></th><!--delete button column-->
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-holiday let-columns="columns">
+        <tr>
+          <td title="Edit this entry." (click)="editHoliday(holiday)">
+            <i class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
+        </td>
+            <td>{{ holiday.holidayName }}</td>
+            <td>{{ holiday.observeDate | date: 'MM/dd/yyyy' }}</td>
+            <!-- <td>{{ holiday.reason }}</td>
+            <td>{{ holiday.hours }}</td>
+            <td class="max-width td-center">
+              <div class="form-switch" >
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="holiday.isholidayd" (click)="toggleIsholidayd(holiday)">
+              </div>
+            </td>
+            <td class="max-width td-center">
+              <div class="form-switch " >
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="holiday.isTaken" (click)="toggleIsTaken(holiday)">
+              </div>
+            </td>
+            <td>{{ holiday.burndownHours }}</td>
+            <td>{{ holiday.burndownDays }}</td> -->
+            <td title="Delete this entry." (click)="deleteHoliday(holiday)">
+              <i class="fa-solid fa-square-minus" style="font-size: 1.5rem; color:  #ef4444; cursor: pointer; width: 20px;" ></i>
+              
+          </td>
+        </tr>
+    </ng-template>
+
+  </p-table>
+
+</div>
+
+</div>
