@@ -176,6 +176,31 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
 
     editPto = this.effect((pto$: Observable<PtoSchedule>) => 
         pto$.pipe(
+            tap((pto) => {
+                this.http.editPto(pto).subscribe(() => { 
+                            
+                    const dayOfWeek = formatDate(pto.ptoDate, 'EEEE', 'en-US').toString()
+                    const ptoWithDayOfWeek = {
+                        ...pto,
+                        dayOfWeek: dayOfWeek
+                    } as PtoSchedule
+                    
+                        this.messageService.add({ severity: 'success', summary: 'PTO Updated', detail: pto.reason?? '' })
+                        this.editPtoSchedule(ptoWithDayOfWeek)
+                    
+                    },
+                    (err: Error) => {
+                        return [
+                            this.messageService.add({ severity: 'error', summary: 'PTO Not Saved', detail: err.message?? '' })
+                        ] 
+                    }
+                )
+            })
+        )
+    )
+
+    editPtoEntry = this.effect((pto$: Observable<PtoSchedule>) => 
+        pto$.pipe(
            switchMap((pto: PtoSchedule) => {
 
             const dialog = this.dialogService.open(AddEditPtoModalComponent, {
@@ -223,7 +248,7 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
         )
     )
 
-    addPto = this.effect((trigger$) => 
+    addPtoEntry = this.effect((trigger$) => 
         trigger$.pipe(
            switchMap(() => {
 

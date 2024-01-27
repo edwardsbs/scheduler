@@ -31,11 +31,11 @@ export class PtoComponent implements OnInit {
   }
 
   editPto(pto: PtoSchedule) {
-    this.ptoStore.editPto(pto);
+    this.ptoStore.editPtoEntry(pto);
   }
 
   addPto() {
-    this.ptoStore.addPto();
+    this.ptoStore.addPtoEntry();
   }
 
   // yearSelectionChange(event: any) {
@@ -51,7 +51,7 @@ export class PtoComponent implements OnInit {
       ...schedule,
       isScheduled: !schedule.isScheduled
     }
-    this.ptoStore.editPtoSchedule(sched)
+    this.ptoStore.editPto(sched)
   }
 
   toggleIsTaken(schedule: PtoSchedule) {
@@ -59,7 +59,7 @@ export class PtoComponent implements OnInit {
       ...schedule,
       isTaken: !schedule.isTaken
     }
-    this.ptoStore.editPtoSchedule(sched)
+    this.ptoStore.editPto(sched)
   }
 
 }
