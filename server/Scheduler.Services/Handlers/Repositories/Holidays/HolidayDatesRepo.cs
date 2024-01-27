@@ -11,7 +11,7 @@ namespace Scheduler.Services.Handlers.Repositories.Holidays;
 
 public interface IHolidaysRepo
 {
-    Task<List<HoldayDateRepoViewModel>> GetHolidayDates(int yearId, CancellationToken token);
+    Task<List<HolidayDateRepoViewModel>> GetHolidayDates(int yearId, CancellationToken token);
 }
 
 public class HolidaysRepo : IHolidaysRepo
@@ -22,7 +22,7 @@ public class HolidaysRepo : IHolidaysRepo
     {
         _config = config;
     }
-    public async Task<List<HoldayDateRepoViewModel>> GetHolidayDates(int yearId, CancellationToken token)
+    public async Task<List<HolidayDateRepoViewModel>> GetHolidayDates(int yearId, CancellationToken token)
     {
         var sql = @"SELECT * 
                     FROM scheduler.HolidayDate 
@@ -36,7 +36,7 @@ public class HolidaysRepo : IHolidaysRepo
 
         var connection = new SqlConnection(connString);
 
-        var holidays = await connection.QueryAsync<HoldayDateRepoViewModel>(sql, new { YearId = yearId });
+        var holidays = await connection.QueryAsync<HolidayDateRepoViewModel>(sql, new { YearId = yearId });
 
         return holidays.ToList();
 
