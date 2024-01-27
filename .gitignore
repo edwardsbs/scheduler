@@ -1,0 +1,65 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+.theia
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+#For Openshift deployement
+/src/main/resources/static
+/node
+/target
+/server/.vs/Scheduler/FileContentIndex/cfe75088-94f3-4995-ac2f-b383565a8215.vsidx
+/server/.vs/Scheduler/FileContentIndex/c4efd472-6556-433c-97a9-b7127166d577.vsidx
+*.vsidx
+/server/.vs/Scheduler/FileContentIndex/889897c2-cd2e-4ac8-8cc3-e8fef2a54d1e.vsidx
+/server/.vs/Scheduler/FileContentIndex/71399d39-e462-4f78-87c0-bd9e25273ecd.vsidx
+/server/.vs/Scheduler/FileContentIndex/59129302-0702-43bd-8a75-5ab79fd65b99.vsidx
+/server/.vs/Scheduler/FileContentIndex/07c0ba4b-7d7f-49f2-9523-7cff2c58ce0a.vsidx
+/server/.vs/Scheduler/DesignTimeBuild/.dtbcache.v2
+/server/.vs/Scheduler/v17/.futdcache.v2
+/server/.vs/Scheduler/v17/.suo
+/server/.vs/ProjectEvaluation/scheduler.projects.v6.1
+/server/.vs/ProjectEvaluation/scheduler.metadata.v6.1
+/server/Scheduler.API/obj/Debug/net7.0/Scheduler.API.csproj.AssemblyReference.cache
