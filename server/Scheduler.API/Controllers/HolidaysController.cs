@@ -1,5 +1,8 @@
-﻿using MediatR;
+﻿using Azure.Core;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Scheduler.Domain.Models;
+using Scheduler.Services.Handlers.Holidays.Commands;
 using Scheduler.Services.Handlers.Holidays.Queries;
 using Scheduler.Services.Handlers.Pto.Schedule.Queries;
 
@@ -46,7 +49,7 @@ public class HolidaysController : ControllerBase
     [HttpGet("all-holiday-dates-from-repo/{yearId}")]
     public async Task<ActionResult> GetAllHolidayDatesFromRepo(int yearId)
     {
-        return Ok(await _mediator.Send(new GetHoldayDatesFromRepoRequest(yearId)));
+        return Ok(await _mediator.Send(new GetHolidayDatesFromRepoRequest(yearId)));
     }
 
     // GET api/<HolidaysController>/5
@@ -57,15 +60,17 @@ public class HolidaysController : ControllerBase
     }
 
     // POST api/<HolidaysController>
-    [HttpPost]
-    public void Post([FromBody] string value)
+    [HttpPost("add-holiday-date")]
+    public async Task<ActionResult> AddHolidayDate([FromBody] AddHolidayDateRequest request, CancellationToken token)
     {
+        return Ok(await _mediator.Send(request, token));
     }
 
     // PUT api/<HolidaysController>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    [HttpPut("edit-holiday-date")]
+    public async Task<ActionResult> EditHolidayDate([FromBody] EditHolidayDateRequest request, CancellationToken token)
     {
+        return Ok(await _mediator.Send(request, token));
     }
 
     // DELETE api/<HolidaysController>/5

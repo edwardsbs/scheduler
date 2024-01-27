@@ -1,9 +1,9 @@
+import { HolidayDate } from './../holidays/data-access/models/index';
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { Holiday, HolidayDate } from '../holidays/data-access/models';
 import { HolidaysHttpService } from '../holidays/data-access/services/holidays-http.service';
 import { DaysOffStore } from '../days-off.store';
-import { skip, tap, withLatestFrom } from 'rxjs';
+import { Observable, map, skip, tap, withLatestFrom } from 'rxjs';
 
 
 export interface HolidayScheduleState {
@@ -43,6 +43,35 @@ export class HolidayScheduleStore extends ComponentStore<HolidayScheduleState> {
         }
     })
 
+    addHolidayDate = this.updater((state, holiday: HolidayDate) => {
+        
+        let holidays = state.holidayDates;
+        const indexToUpdate = state.holidayDates.findIndex(item => item.holidayId === holiday.holidayId);
+        const updatedHoliday = {
+            ...holidays[indexToUpdate],
+            observeDate: holiday.observeDate,
+            holidayDateId: holiday.holidayDateId
+        } //to preserve the Holiday Name
+        holidays[indexToUpdate] = updatedHoliday;
+
+        return {
+            ...state,
+            holidayDates: holidays
+        }
+    })
+
+    updateHolidayDate = this.updater((state, holiday: HolidayDate) => {
+        
+        let holidays = state.holidayDates;
+        const indexToUpdate = state.holidayDates.findIndex(item => item.holidayDateId === holiday.holidayDateId);
+        holidays[indexToUpdate] = holiday;
+
+        return {
+            ...state,
+            holidayDates: holidays
+        }
+    })
+
 
     //EFFECTS
     yearSelectionChange = this.effect(() =>
@@ -63,5 +92,29 @@ export class HolidayScheduleStore extends ComponentStore<HolidayScheduleState> {
                 this.setHolidayDates(results)
             })
         )           
+    )
+
+    editOrAddHolidayDate = this.effect((holiday$: Observable<HolidayDate>) =>
+        holiday$.pipe(
+            tap((hol) => {
+                if(hol.holidayDateId === 0 || hol.holidayDateId === null) {
+                    this.http.addHolidayDate(hol).subscribe((res) => {
+                            this.addHolidayDate(res)
+                        },
+                        (err: Error) => {                        
+                            // this.messageService.add({ severity: 'error', summary: 'PTO Not Saved', detail: err.message?? '' })
+                            return console.log(err)
+                        })
+                } else {
+                    this.http.saveHolidayDate(hol).subscribe(() => {
+                        console.log('editing', hol)
+                        // tap(() => {
+                           this.updateHolidayDate(hol);
+                        // })
+
+                    })                    
+                }
+            })
+        )
     )
 }

@@ -27,7 +27,7 @@
  
 <ng-template #componentLoading class="d-flex justify-content-center mb-3">
   <div class="w-100 text-center mt-5">
-    <span class="k-icon k-i-loading k-icon-xl"></span>Loading...
+    <span class="pi pi-spin pi-spinner"></span>Loading...
   </div>
 </ng-template>
 
@@ -44,7 +44,7 @@
     >
     <ng-template pTemplate="header" let-columns>
         <tr>
-            <th style="width: 5rem;"></th> <!--edit button column-->
+            <!-- <th style="width: 5rem;"></th> edit button column -->
             
             <th pResizableColumn pSortableColumn="holidayName">
               Holiday
@@ -91,11 +91,28 @@
 
     <ng-template pTemplate="body" let-holiday let-columns="columns">
         <tr>
-          <td title="Edit this entry." (click)="editHoliday(holiday)">
+          <!-- <td title="Edit this entry." (click)="editHoliday(holiday)">
             <i class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
-        </td>
+        </td> -->
             <td>{{ holiday.holidayName }}</td>
-            <td>{{ holiday.observeDate | date: 'MM/dd/yyyy' }}</td>
+            <!-- <td>{{ holiday.observeDate | date: 'MM/dd/yyyy' }}</td> -->
+            <td title="Edit/Add Date" (click)="editDate(holiday)">
+              <div class="inline-flex align-items-center justify-content-center gap-2">
+                <span class="font-bold white-space-nowrap">{{ holiday.observeDate | date: 'MM/dd/yyyy' }}</span>
+                <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editDate(holiday)"></button> -->
+                <i class="fa-solid fa-pencil ms-2" style="font-size: 1.25rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>
+              </div>              
+            </td>
+            <!-- <td>
+              
+              <p-calendar [(ngModel)]="holiday.observeDate" [iconDisplay]="'input'" [showIcon]="true" inputId="templatedisplay">
+                <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+                    <i class="pi pi-calendar pointer-events-none" (click)="clickCallBack($event)"></i>
+                </ng-template>
+            </p-calendar>
+            </td> -->
+            <!-- (onSelect)="getDayOfWeekSingle($event)" -->
+            
             <!-- <td>{{ holiday.reason }}</td>
             <td>{{ holiday.hours }}</td>
             <td class="max-width td-center">
@@ -120,5 +137,39 @@
   </p-table>
 
 </div>
+
+<p-dialog 
+  [(visible)]="dateDialog" 
+  [style]="{ width: '450px', height: '580px' }" 
+  header="" 
+  [modal]="true" 
+  styleClass="p-fluid">
+  <ng-template pTemplate="header">
+        <h2>{{ holiday.holidayName }}</h2>
+  </ng-template>
+  <ng-template pTemplate="content">
+      
+      <div class="field">
+          <!-- <label for="inventoryStatus">Date</label> -->
+          <p-calendar 
+            [(ngModel)]="holiday.observeDate" 
+            [iconDisplay]="'input'" 
+            [showIcon]="true" 
+            inputId="templatedisplay"
+            [inline]="true" [showWeek]="true"
+            >
+            <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+                <i class="pi pi-calendar pointer-events-none" (click)="clickCallBack($event)"></i>
+            </ng-template>
+        </p-calendar>
+      </div>
+
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveDate()"></button>
+  </ng-template>
+</p-dialog>
 
 </div>
