@@ -24,6 +24,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { PtoScheduleComponent } from './pto/pto-schedule/pto-schedule.component';
 import { AddEditAnnualModalComponent } from './pto/add-edit-annual-modal/add-edit-annual-modal.component';
+import { HolidayScheduleComponent } from './holiday-schedule/holiday-schedule.component';
+import { HolidayScheduleStore } from './holiday-schedule/holiday-schedule.store';
 
 @NgModule({
   imports: [
@@ -44,7 +46,15 @@ import { AddEditAnnualModalComponent } from './pto/add-edit-annual-modal/add-edi
     InputTextModule,
     InputSwitchModule,
   ],
-  declarations: [DaysOffComponent, HolidaysComponent, PtoComponent, AddEditPtoModalComponent, PtoScheduleComponent, AddEditAnnualModalComponent],
-  providers: [DaysOffStore, PtoStore, DialogService, MessageService]
+  declarations: [
+    DaysOffComponent, 
+    HolidaysComponent, 
+    HolidayScheduleComponent,
+    PtoComponent, 
+    AddEditPtoModalComponent, 
+    PtoScheduleComponent, 
+    AddEditAnnualModalComponent
+  ],
+  providers: [DaysOffStore, PtoStore, HolidayScheduleStore, DialogService, MessageService]
 })
 export class DaysOffModule { }

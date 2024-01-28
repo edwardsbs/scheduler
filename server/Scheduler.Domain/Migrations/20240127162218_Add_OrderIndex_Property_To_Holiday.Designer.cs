@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Scheduler.Domain;
 
@@ -11,9 +12,11 @@ using Scheduler.Domain;
 namespace Scheduler.Domain.Migrations
 {
     [DbContext(typeof(SchedulerContext))]
-    partial class SchedulerContextModelSnapshot : ModelSnapshot
+    [Migration("20240127162218_Add_OrderIndex_Property_To_Holiday")]
+    partial class Add_OrderIndex_Property_To_Holiday
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

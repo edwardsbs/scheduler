@@ -8,5 +8,6 @@ public class Holiday
     public string HolidayName { get; set;}
     public bool IsPlantObserved { get; set; }
     public string? Note { get; set; }
+    public int OrderIndex { get; set; }
     //public ICollection<HolidayDate>? HolidayDates { get; internal set; }
 }

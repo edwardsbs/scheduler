@@ -11,6 +11,7 @@ export type PtoSchedule = {
     dayOfWeek?: string;
     burndownHours: number;
     burndownDays: number;
+    isHoliday: boolean;
 }
 
 export const initialPtoSchedule: PtoSchedule = {
@@ -23,6 +24,7 @@ export const initialPtoSchedule: PtoSchedule = {
     year: new Date().getFullYear(),
     burndownDays: 0,
     burndownHours: 0,
+    isHoliday: false,
 }
 
 export type NewPto = Pick<PtoSchedule, 
