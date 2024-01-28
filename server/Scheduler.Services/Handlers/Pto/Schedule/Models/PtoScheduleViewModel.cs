@@ -22,6 +22,9 @@ public class PtoScheduleViewModel
     public string? DayOfWeek { get; set; }
     public int BurndownHours { get; set; }
     public double BurndownDays { get; set; }
+    public bool IsHoliday { get; set; } = false; //to combine PTO's and Holidays into one list
+    public int? HolidayDateId { get; set; } //to combine PTO's and Holidays into one list
+
 
     //public void CreateMappings(Profile config)
     //{

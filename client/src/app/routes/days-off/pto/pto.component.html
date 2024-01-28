@@ -134,13 +134,13 @@
               (click)="editPto(schedule)"   
               >
             </button> -->
-            <i class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
+            <i *ngIf="!schedule.isHoliday" class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
             <!-- <p-button styleClass="p-button-sm p-button-raised" icon="pi pi-pencil" class="mb-2" (click)="editPto(schedule)"></p-button> -->
         </td>
-            <td>{{ schedule.ptoDate | date: 'MM/dd/yyyy' }}</td>
-            <td>{{ schedule.dayOfWeek }}</td>
-            <td>{{ schedule.reason }}</td>
-            <td>{{ schedule.hours }}</td>
+            <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.ptoDate | date: 'MM/dd/yyyy' }}</td>
+            <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.dayOfWeek }}</td>
+            <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.reason }}</td>
+            <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.isHoliday? '' : schedule.hours }}</td>
             <!-- <td [pEditableColumn]="schedule.hours" pEditableColumnField="hours">
               <p-cellEditor>
                   <ng-template pTemplate="input">
@@ -154,18 +154,18 @@
             <td class="max-width td-center">
               <!-- <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isScheduled, 'text-red-500 pi-times-circle': !schedule.isScheduled }"></i> -->
               <div class="form-switch" >
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="schedule.isScheduled" (click)="toggleIsScheduled(schedule)">
+                <input *ngIf="!schedule.isHoliday"  class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="schedule.isScheduled" (click)="toggleIsScheduled(schedule)">
                 <!-- <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label> -->
               </div>
             </td>
             <td class="max-width td-center">
               <div class="form-switch " >
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="schedule.isTaken" (click)="toggleIsTaken(schedule)">
+                <input *ngIf="!schedule.isHoliday"  class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" [checked]="schedule.isTaken" (click)="toggleIsTaken(schedule)">
               </div>
               <!-- <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isTaken, 'text-red-500 pi-times-circle': !schedule.isTaken }"></i> -->
             </td>
-            <td>{{ schedule.burndownHours }}</td>
-            <td>{{ schedule.burndownDays }}</td>
+            <td>{{ schedule.isHoliday? '' : schedule.burndownHours }}</td>
+            <td>{{ schedule.isHoliday? '' : schedule.burndownDays }}</td>
             <td title="Delete this entry." (click)="deletePto(schedule)">
               <!-- <button type="button" pButton pRipple 
                 icon="pi pi-minus"                 

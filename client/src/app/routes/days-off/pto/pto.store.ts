@@ -383,7 +383,8 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
 
 
     buildBurndown(pto: PtoSchedule[]) {
-        let startingBdHours = pto[0].burndownHours + pto[0].hours;
+        const nonHoliday = pto.filter(x => !x.isHoliday)
+        let startingBdHours = nonHoliday[0].burndownHours + nonHoliday[0].hours;
         return pto.map(p => {
             const hours = startingBdHours - p.hours;
             startingBdHours -= p.hours;
