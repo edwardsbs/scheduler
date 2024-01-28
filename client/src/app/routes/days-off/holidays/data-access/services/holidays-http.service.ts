@@ -35,6 +35,32 @@ export class HolidaysHttpService {
     // return results
   }
 
+  getAllHolidayDatesForYear(year: number): Observable<HolidayDate[]> {
+    return  this.http.get<HolidayDate[]>(
+      `${this.apiPath}/all-holiday-dates/${year}`
+    ) 
+  }
+  
+  addHolidayDate(holiday: HolidayDate): Observable<HolidayDate> {
+    return  this.http.post<HolidayDate>(
+      `${this.apiPath}/add-holiday-date`,
+      {
+        holidayId: holiday.holidayId,
+        holidayDate: holiday.observeDate,
+      }
+    ) 
+  }
+
+  saveHolidayDate(holiday: HolidayDate) {
+    return  this.http.put(
+      `${this.apiPath}/edit-holiday-date`,
+      {
+        holidayDateId: holiday.holidayDateId,
+        holidayDate: holiday.observeDate
+      }
+    ) 
+  }
+
   getAllHolidays(): Observable<Holiday[]> {
 
     // const rs: HolidayDate[] = [];

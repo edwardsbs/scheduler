@@ -40,6 +40,7 @@ public static class Bootstrapper
 
         //Repositories
         services.AddTransient<IHolidaysRepo, HolidaysRepo>();
+        services.AddTransient<IHolidaysForYearRepo, HolidaysForYearRepo>();
         services.AddTransient<IPtoAnnualForYearService, PtoAnnualForYearService>();
         services.AddTransient<IYearModelForYearService, YearModelForYearService>();
 
