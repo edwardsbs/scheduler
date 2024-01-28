@@ -135,6 +135,7 @@
               >
             </button> -->
             <i *ngIf="!schedule.isHoliday" class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
+            <i *ngIf="schedule.isHoliday" class="fa-regular fa-star ms-4 holiday" style="font-size: 1rem; width: 20px; font-style: normal;" ></i>            
             <!-- <p-button styleClass="p-button-sm p-button-raised" icon="pi pi-pencil" class="mb-2" (click)="editPto(schedule)"></p-button> -->
         </td>
             <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.ptoDate | date: 'MM/dd/yyyy' }}</td>
