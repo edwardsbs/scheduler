@@ -99,8 +99,10 @@
             <td title="Edit/Add Date" (click)="editDate(holiday)">
               <div class="inline-flex align-items-center justify-content-center gap-2">
                 <span class="font-bold white-space-nowrap">{{ holiday.observeDate | date: 'MM/dd/yyyy' }}</span>
+                <span *ngIf="holiday.observeDate" class="white-space-nowrap">{{ getDayOfWeek(holiday.observeDate) }}</span>
                 <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editDate(holiday)"></button> -->
-                <i class="fa-solid fa-pencil ms-2" style="font-size: 1.25rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>
+                <i *ngIf="holiday.observeDate" class="fa-solid fa-pencil ms-2" style="font-size: 1.25rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>
+                <i *ngIf="!holiday.observeDate" class="fa-regular fa-square-plus ms-2" style="font-size: 1.5rem; color: green; cursor: pointer; width: 20px;" ></i>
               </div>              
             </td>
             <!-- <td>

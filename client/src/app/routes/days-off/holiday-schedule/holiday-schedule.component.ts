@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { HolidayDate } from '../holidays/data-access/models';
 import { HolidayScheduleStore } from './holiday-schedule.store';
 import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-holiday-schedule',
@@ -24,6 +25,10 @@ export class HolidayScheduleComponent {
     private readonly compStore: HolidayScheduleStore,
     private fb: FormBuilder,
   ) { }
+
+  getDayOfWeek(val: Date) : string {
+    return formatDate(val, 'EEEE', 'en-US').toString();
+  }
 
   editDate(holiday: HolidayDate) {
     this.holiday = { ...holiday };
