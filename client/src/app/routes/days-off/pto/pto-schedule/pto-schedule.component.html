@@ -13,7 +13,7 @@
     <div class="row" *ngIf="ptoAnnual$ | async as pto">
 
       <!-- STARTING/BASE PTO -->
-      <div class="col-4 verticalLine">
+      <div class="col-3 verticalLine">
         <!-- {{ pto | json }} -->
           <div class="lh-base">
             <p class="text-muted fs-5 mb-0 mt-0" >Starting PTO:</p>
@@ -36,7 +36,7 @@
       </div>
 
       <!-- SCHEDULED -->
-      <div class="col-4 verticalLine">
+      <div class="col-3 verticalLine">
         <div class="lh-base">
           <p class="text-muted fs-5 mb-0 mt-0" >Scheduled PTO:</p>
           <div class="bg-success text-dark bg-opacity-10">
@@ -55,7 +55,7 @@
       </div>
 
       <!-- TAKEN -->
-      <div class="col-4 verticalLine">
+      <div class="col-3 verticalLine">
         <div class="lh-base">
           <p class="text-muted fs-5 mb-0 mt-0" >Actual PTO Taken:</p>
           <div>
@@ -66,6 +66,10 @@
             <label class="text-white me-2" for="hours">Remaining: <span class="fw-semibold fs-6 ms-1">{{ ptoActualRemaining$ | async }}</span> hours</label>
             <label class="text-white" for="hours"> | <span class="fw-semibold fs-6 ms-2">{{ ((ptoActualRemaining$ | async)! / 8.0) }}</span> days</label>
           </div>
+          <!-- <div class="bg-success text-dark bg-opacity-10">
+            <label class="text-muted me-2" for="hours">Comp Time Taken: <span class="text-muted fw-semibold fs-6 ms-1">{{ compTimeTaken$ | async }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-muted fw-semibold fs-6 ms-2">{{ ((compTimeTaken$ | async)! / 8.0) }}</span> days</label>
+          </div>  -->
         </div>
       </div>
 
@@ -78,6 +82,25 @@
             </span>
           </span>
       </div> -->
+
+      <!-- COMP TIME -->
+      <div class="col-3 verticalLine">
+        <div class="lh-base">
+          <p class="text-muted fs-5 mb-0 mt-0" >Comp Time:</p>
+          <div>
+            <label class="text-muted me-2" for="hours">Earned Comp Time: <span class="text-muted fw-semibold fs-6 ms-1">{{ 120 }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-muted fw-semibold fs-6 ms-2">{{ (120 / 8.0) }}</span> days</label>
+          </div>
+          <div class="bg-dark text-dark bg-opacity-10">
+            <label class="text-muted me-2" for="hours">Comp Time Taken: <span class="text-muted fw-semibold fs-6 ms-1">{{ compTimeTaken$ | async }}</span> hours</label>
+            <label class="text-muted" for="hours"> | <span class="text-muted fw-semibold fs-6 ms-2">{{ ((compTimeTaken$ | async)! / 8.0) }}</span> days</label>
+          </div>
+          <div class="bg-success text-secondary bg-opacity-10">
+            <label class="text-secondary me-2" for="hours">Remaining: <span class="fw-semibold fs-6 ms-1">{{ compTimeRemaining$ | async }}</span> hours</label>
+            <label class="text-secondary" for="hours"> | <span class="fw-semibold fs-6 ms-2">{{ ((compTimeRemaining$ | async)! / 8.0) }}</span> days</label>
+          </div> 
+        </div>
+      </div>
 
     </div>  
     

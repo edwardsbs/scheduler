@@ -7,6 +7,7 @@ export type PtoSchedule = {
     hours: number;
     isScheduled: boolean;
     isTaken: boolean;
+    takenAsCompTime: boolean;
     year: number;
     dayOfWeek?: string;
     burndownHours: number;
@@ -21,6 +22,7 @@ export const initialPtoSchedule: PtoSchedule = {
     hours: 0,
     isScheduled: false,
     isTaken: false,
+    takenAsCompTime: false,
     year: new Date().getFullYear(),
     burndownDays: 0,
     burndownHours: 0,

@@ -35,7 +35,12 @@ body { margin: 0;  }
     // border-bottom-left-radius: 6px;
 }
 
-
+.p-card .p-card-body {
+    padding: .25rem;
+}
+.p-card .p-card-content {
+    padding: .25rem;
+}
 
 a {
     // color: var(--#{$prefix}#4b5563);

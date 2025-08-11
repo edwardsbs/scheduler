@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeDashboardStore } from './home-dashboard.store';
 
 @Component({
   selector: 'app-home-dashboard',
   templateUrl: './home-dashboard.component.html',
   styleUrls: ['./home-dashboard.component.css']
 })
-export class HomeDashboardComponent implements OnInit {
+export class HomeDashboardComponent {
 
-  constructor() { }
+  associates$ = this.compStore.associates$
 
-  ngOnInit() {
-  }
+  constructor(
+    private readonly compStore: HomeDashboardStore
+  ) { }
+
 
 }

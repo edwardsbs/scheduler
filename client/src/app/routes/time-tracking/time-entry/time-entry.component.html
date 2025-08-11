@@ -1,0 +1,10 @@
+<p-card class="m-0 p-0" [style]="{ width: '220px' }">
+  <!-- <ng-template pTemplate="header">
+    <p class="font-bold time-entry-hdr ms-2 mb-0">{{date | date: 'EEEE,  MMM d, y' }} </p>
+  </ng-template> -->
+  <p class="mt-0 ms-2 mb-2">Start Time: {{ startTime | date: 'h:mm a' }} </p>
+  <p class="m-2">End Time: {{ endTime | date: 'h:mm a' }} </p>
+  <p class="m-2">Total Time: {{ elapsedTime?.hours }}:{{ elapsedTime?.minutes }} | {{ elapsedHours }} </p>
+  <p class="m-2">Type: <span>work</span></p>
+  <p class="m-2">Note: <span>rms-542</span></p>
+</p-card>

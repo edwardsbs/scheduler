@@ -10,7 +10,7 @@ import { Observable, from, map, tap } from 'rxjs';
 export class HolidaysHttpService {
   // http://localhost:37927/swagger/index.html
   //https://localhost:44318/swagger/index.html
-  apiPath = "https://localhost:44318/Holidays"
+  apiPath = "https://localhost:44338/Holidays"
 
   constructor(
     private http: HttpClient

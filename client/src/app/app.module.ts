@@ -13,11 +13,14 @@ import { SidenavModule } from './shared/sidenav/sidenav.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DaysOffModule } from './routes/days-off/days-off.module';
 import { StoreModule } from '@ngrx/store';
-import { daysOffReducer } from './routes/days-off/data-access/store/days-off.reducer';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
+import { EffectsModule } from '@ngrx/effects';
+import { TimeTrackingEffects } from './scheduler/data-access/store/time-tracking/time-tracking.effects';
+import { schedulerReducers } from './scheduler/data-access/store/scheduler.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [	
@@ -38,7 +41,15 @@ import { StyleClassModule } from 'primeng/styleclass';
     TimeTrackingModule,
     DaysOffModule,
     HttpClientModule,
-    StoreModule.forRoot({ dasyOff: daysOffReducer }, {}),
+    StoreModule.forRoot(schedulerReducers),
+    // StoreModule.forRoot(notesReducers),  
+    EffectsModule.forRoot([
+      TimeTrackingEffects,
+    ]),
+    StoreDevtoolsModule.instrument({
+      name: 'Scheduler',
+      maxAge: 25,
+    }),
     CardModule,
     TableModule,
     ButtonModule,

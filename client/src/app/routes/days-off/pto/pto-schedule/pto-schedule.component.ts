@@ -16,6 +16,8 @@ export class PtoScheduleComponent implements OnInit {
   ptoOnHrCalendar$ = this.ptoStore.ptoOnHrCalendar$;
   ptoIsTaken$ = this.ptoStore.ptoIsTaken$;
   ptoActualRemaining$ = this.ptoStore.ptoActualRemaining$;
+  compTimeTaken$ = this.ptoStore.compTimeTaken$;
+  compTimeRemaining$ = this.ptoStore.compTimeRemaining$;
 
   doesPtoAnnualNeedToBeCreated$ = this.ptoStore.doesPtoAnnualNeedToBeCreated$;
 

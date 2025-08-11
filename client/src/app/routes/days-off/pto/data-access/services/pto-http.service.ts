@@ -8,7 +8,7 @@ import { NewPto, NewPtoAnnual, PtoAnnual, PtoSchedule } from '../models';
 })
 export class PtoHttpService {
 
-  apiPath = "https://localhost:44318/Pto"
+  apiPath = "https://localhost:44338/Pto"
 
   constructor(
     private http: HttpClient
@@ -34,6 +34,7 @@ export class PtoHttpService {
         hours: pto.hours,
         isScheduled: pto.isScheduled,
         isTaken: pto.isTaken,
+        takenAsCompTime: pto.takenAsCompTime,
         ptoDate: pto.ptoDate,
         reason: pto.reason,
       }

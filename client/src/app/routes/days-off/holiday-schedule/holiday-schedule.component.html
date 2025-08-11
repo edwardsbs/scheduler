@@ -151,10 +151,10 @@
   </ng-template>
   <ng-template pTemplate="content">
       
-      <div class="field">
+      <div class="field" [formGroup]="fgHolidaySchedule">
           <!-- <label for="inventoryStatus">Date</label> -->
           <p-calendar 
-            [(ngModel)]="holiday.observeDate" 
+            formControlName="observeDate"
             [iconDisplay]="'input'" 
             [showIcon]="true" 
             inputId="templatedisplay"
@@ -164,6 +164,7 @@
                 <i class="pi pi-calendar pointer-events-none" (click)="clickCallBack($event)"></i>
             </ng-template>
         </p-calendar>
+        <!-- [(ngModel)]="holiday.observeDate" -->
       </div>
 
   </ng-template>

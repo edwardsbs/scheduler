@@ -62,4 +62,12 @@ export class PtoComponent implements OnInit {
     this.ptoStore.editPto(sched)
   }
 
+  toggleTakenAsCompTime(schedule: PtoSchedule) {
+    const sched = {
+      ...schedule,
+      takenAsCompTime: !schedule.takenAsCompTime
+    }
+    this.ptoStore.editPto(sched)
+  }
+
 }

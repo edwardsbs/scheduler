@@ -4,6 +4,7 @@ import { ComponentStore } from '@ngrx/component-store';
 import { HolidaysHttpService } from '../holidays/data-access/services/holidays-http.service';
 import { DaysOffStore } from '../days-off.store';
 import { Observable, map, skip, tap, withLatestFrom } from 'rxjs';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 
 export interface HolidayScheduleState {
@@ -17,9 +18,14 @@ const initialHolidayScheduleState: HolidayScheduleState = {
 @Injectable()
 export class HolidayScheduleStore extends ComponentStore<HolidayScheduleState> {
 
+    fgHolidaySchedule = this.fb.group({
+        observeDate: new FormControl<Date | null>(null),
+    })
+
     constructor(
         private readonly http: HolidaysHttpService,
         private readonly daysOffStore: DaysOffStore,
+        private fb: FormBuilder,
     )
     {
         super(initialHolidayScheduleState)

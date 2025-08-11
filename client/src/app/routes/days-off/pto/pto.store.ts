@@ -72,7 +72,7 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
         (pto) => {
             // const ptoIsScheduled = pto.filter(x => x.isScheduled)
             let sum: number = 0;
-            pto.forEach(a => sum += a.hours);
+            pto.forEach(a => sum += (a.takenAsCompTime === false? a.hours : 0));
             return sum; 
         }    
     )
@@ -110,6 +110,22 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
         this.ptoIsTaken$,
         (annual, actual) => {
             return (+(annual?.totalPtoHours?? 0) - +actual)
+        }
+    )
+
+    compTimeTaken$ = this.select(
+        this.ptoSchedule$,
+        (pto) => {
+            let sum: number = 0;
+            pto.forEach(a => sum += (a.takenAsCompTime === true? a.hours : 0));
+            return sum; 
+        }    
+    )
+
+    compTimeRemaining$ = this.select(
+        this.compTimeTaken$,
+        (actual) => {
+            return (+(120) - +actual)
         }
     )
 
@@ -383,7 +399,7 @@ export class PtoStore extends ComponentStore<PtoStoreState> {
 
 
     buildBurndown(pto: PtoSchedule[]) {
-        const nonHoliday = pto.filter(x => !x.isHoliday)
+        const nonHoliday = pto.filter(x => !x.isHoliday && !x.takenAsCompTime)
         let startingBdHours = nonHoliday[0].burndownHours + nonHoliday[0].hours;
         return pto.map(p => {
             const hours = startingBdHours - p.hours;

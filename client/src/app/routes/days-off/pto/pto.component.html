@@ -106,16 +106,20 @@
               <p-sortIcon field="isScheduled"></p-sortIcon>
             </th>
             <th pResizableColumn pSortableColumn="isTaken">
-              Taken
+              Taken (as PTO)
               <p-sortIcon field="isTaken"></p-sortIcon>
             </th>
-            <th pResizableColumn pSortableColumn="isTaken">
+            <th pResizableColumn pSortableColumn="takenAsCompTime">
+              Taken (as Comp Time)
+              <p-sortIcon field="takenAsCompTime"></p-sortIcon>
+            </th>
+            <th pResizableColumn pSortableColumn="burndownHours">
               Burn Down Hrs
-              <p-sortIcon field="isTaken"></p-sortIcon>
+              <p-sortIcon field="burndownHours"></p-sortIcon>
             </th>
-            <th pResizableColumn pSortableColumn="isTaken">
+            <th pResizableColumn pSortableColumn="burndownDays">
               Burn Down Days
-              <p-sortIcon field="isTaken"></p-sortIcon>
+              <p-sortIcon field="burndownDays"></p-sortIcon>
             </th>
             <!-- <th pSortableColumn="year">
               Year
@@ -127,17 +131,12 @@
 
     <ng-template pTemplate="body" let-schedule let-columns="columns">
         <tr>
-          <td title="Edit this entry." (click)="editPto(schedule)">
-            <!-- <button type="button" pButton pRipple 
-              icon="pi pi-pencil"                 
-              class="p-button-sm p-button-raised"
-              (click)="editPto(schedule)"   
-              >
-            </button> -->
-            <i *ngIf="!schedule.isHoliday" class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
-            <i *ngIf="schedule.isHoliday" class="fa-regular fa-star ms-4 holiday" style="font-size: 1rem; width: 20px; font-style: normal;" ></i>            
-            <!-- <p-button styleClass="p-button-sm p-button-raised" icon="pi pi-pencil" class="mb-2" (click)="editPto(schedule)"></p-button> -->
-        </td>
+          <td *ngIf="schedule.isHoliday" title="Can't Edit a Holiday or Shutdown entry.">
+            <i class="fa-regular fa-star ms-4 holiday" style="font-size: 1rem; width: 20px; font-style: normal;" ></i>            
+          </td>
+          <td *ngIf="!schedule.isHoliday" title="Edit this entry." (click)="editPto(schedule)">
+            <i class="fa-solid fa-pencil ms-4" style="font-size: 1.15rem; color: #2563eb; cursor: pointer; width: 20px;" ></i>            
+          </td>
             <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.ptoDate | date: 'MM/dd/yyyy' }}</td>
             <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.dayOfWeek }}</td>
             <td [ngClass]="schedule.isHoliday? 'holiday' : ''">{{ schedule.reason }}</td>
@@ -165,8 +164,19 @@
               </div>
               <!-- <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isTaken, 'text-red-500 pi-times-circle': !schedule.isTaken }"></i> -->
             </td>
-            <td>{{ schedule.isHoliday? '' : schedule.burndownHours }}</td>
-            <td>{{ schedule.isHoliday? '' : schedule.burndownDays }}</td>
+            <td class="max-width td-center">
+              <div class="form-switch " >
+                <input *ngIf="!schedule.isHoliday"  
+                  class="form-check-input " 
+                  type="checkbox" role="switch" 
+                  id="flexSwitchCheckChecked" 
+                  [checked]="schedule.takenAsCompTime" 
+                  (click)="toggleTakenAsCompTime(schedule)">
+              </div>
+              <!-- <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': schedule.isTaken, 'text-red-500 pi-times-circle': !schedule.isTaken }"></i> -->
+            </td>
+            <td>{{ schedule.isHoliday || schedule.takenAsCompTime? '' : schedule.burndownHours }}</td>
+            <td>{{ schedule.isHoliday || schedule.takenAsCompTime? '' : schedule.burndownDays }}</td>
             <td title="Delete this entry." (click)="deletePto(schedule)">
               <!-- <button type="button" pButton pRipple 
                 icon="pi pi-minus"                 
