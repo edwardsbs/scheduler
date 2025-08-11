@@ -1,8 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/home-dashboard', pathMatch: 'full'}, 
   {
     path: 'home-dashboard',
@@ -15,13 +13,5 @@ const routes: Routes = [
   {
     path: 'days-off',
     loadChildren: () => import('./routes/days-off/days-off.module').then(m => m.DaysOffModule)
-  },
-
-  
-];
-
-@NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+  }
+]

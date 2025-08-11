@@ -17,7 +17,7 @@ export class HolidayScheduleComponent {
   holidayDates$ = this.compStore.holidayDates$;
   selectedYear$ = this.compStore.selectedYear$;
   fgHolidaySchedule = this.compStore.fgHolidaySchedule;
-  
+
   // holidayForm = this.fb.group({
   //   holidays: this.fb.array([])
   // });

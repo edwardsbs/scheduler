@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { concatLatestFrom, ofType } from "@ngrx/effects";
+import { ofType } from "@ngrx/effects";
+import { concatLatestFrom } from "@ngrx/operators";
 import { ActionsSubject, Store } from "@ngrx/store";
 import { Observable, tap, withLatestFrom } from "rxjs";
 import { LocalStorageService } from "src/app/scheduler/data-access/services/local-storage.service";
