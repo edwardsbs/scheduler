@@ -1,10 +1,17 @@
-import { Time } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { CardModule } from 'primeng/card';
+import { Time } from 'src/app/shared/models/time';
 
 @Component({
   selector: 'task-unit',
   templateUrl: './task-unit.component.html',
-  styleUrls: ['./task-unit.component.scss']
+  styleUrls: ['./task-unit.component.scss'],
+  standalone: true,
+  imports: [
+    DatePipe,
+    CardModule,
+  ]
 })
 export class TaskUnitComponent implements OnInit {
 

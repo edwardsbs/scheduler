@@ -1,3 +1,7 @@
-<p-card header="{{date | date: 'EEEE' }}" subheader="{{date | date: 'MMM d, y' }}" [style]="{ width: '250px' }">
+<p-card   
+  [style]="{ width: '200px' }"
+  >
+  <ng-template pTemplate="title"> {{date | date: 'EEEE' }} </ng-template>
+  <ng-template pTemplate="subtitle"> {{date | date: 'MMM d, y' }} </ng-template>
   <time-entry></time-entry>
 </p-card>

@@ -99,7 +99,7 @@ export class TimeTrackingComponentStore extends ComponentStore<TimeTrackingState
         var week= new Array(); 
         // Starting Monday not Sunday
         let adjustedDate: Date = new Date(JSON.parse(JSON.stringify(selectedDate)));;
-        adjustedDate.setDate((adjustedDate.getDate() - adjustedDate.getDay() +1))
+        adjustedDate.setDate((adjustedDate.getDate() - adjustedDate.getDay() +1))//always finds Monday
 
         // console.log('1 - selectedDate', selectedDate, 'adjustedDate', adjustedDate, 'current selected', this.currentDateSelection)
 

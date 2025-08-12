@@ -1,10 +1,19 @@
-import { Time } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { CardModule } from 'primeng/card';
+import { TimeEntryComponent } from './time-entry/time-entry.component';
+import { Time } from 'src/app/shared/models/time';
 
 @Component({
   selector: 'day-header',
   templateUrl: './day-header.component.html',
-  styleUrls: ['./day-header.component.scss']
+  styleUrls: ['./day-header.component.scss'],
+  standalone: true,
+  imports: [
+    DatePipe,
+    CardModule,
+    TimeEntryComponent,
+  ]
 })
 export class DayHeaderComponent implements OnInit {
 

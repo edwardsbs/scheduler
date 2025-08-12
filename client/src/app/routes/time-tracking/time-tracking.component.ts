@@ -1,11 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TimeTrackingComponentStore } from './time-tracking.store';
+import { DatePickerModule } from 'primeng/datepicker';
+import { CommonModule } from '@angular/common';
+// import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
+import { TabViewModule } from 'primeng/tabview';
+import { DayHeaderComponent } from './day-header/day-header.component';
+import { TaskUnitComponent } from './task-unit/task-unit.component';
 
 @Component({
   selector: 'time-tracking',
   templateUrl: './time-tracking.component.html',
-  styleUrls: ['./time-tracking.component.scss']
+  styleUrls: ['./time-tracking.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    TabViewModule,
+    // CalendarModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    CardModule,
+    DatePickerModule,
+    DayHeaderComponent,
+    TaskUnitComponent,
+  ],
+  providers: [TimeTrackingComponentStore],
 })
 export class TimeTrackingComponent implements OnInit {
 

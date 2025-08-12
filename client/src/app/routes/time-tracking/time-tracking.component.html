@@ -9,7 +9,7 @@
         <div class="p-2">
             <div class="card">
                 <form [formGroup]="timeEntryForm">
-                    <p-calendar  
+                    <!-- <p-calendar  
                       formControlName="date"
                       [firstDayOfWeek]=1
                       [iconDisplay]="'input'" 
@@ -19,10 +19,25 @@
                       [showButtonBar]="true"
                       (onSelect)="pushSelection($event)"
                     >
-                    <ng-template pTemplate="date" let-date>
-                        <span [ngStyle]="{textDecoration: (date.day < 21 && date.day > 10) ? 'line-through' : 'inherit'}">{{date.day}}</span>
-                    </ng-template>
-                </p-calendar>
+                        <ng-template pTemplate="date" let-date>
+                            <span [ngStyle]="{textDecoration: (date.day < 21 && date.day > 10) ? 'line-through' : 'inherit'}">{{date.day}}</span>
+                        </ng-template>
+                    </p-calendar> -->
+                    <p-datepicker  
+                      formControlName="date"
+                      [firstDayOfWeek]=1
+                      [iconDisplay]="'input'" 
+                      [showIcon]="true"
+                      [inline]="true"
+                      size="small" 
+                      [showWeek]="true"
+                      [showButtonBar]="true"
+                      (onSelect)="pushSelection($event)"
+                    >
+                        <ng-template pTemplate="date" let-date>
+                            <span [ngStyle]="{textDecoration: (date.day < 21 && date.day > 10) ? 'line-through' : 'inherit'}">{{date.day}}</span>
+                        </ng-template>
+                    </p-datepicker>
                 </form>
         
             </div>

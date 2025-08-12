@@ -9,7 +9,9 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 import { schedulerReducers } from "./scheduler/data-access/store/scheduler.reducer";
 import { TimeTrackingEffects } from "./scheduler/data-access/store/time-tracking/time-tracking.effects";
 import { AddHeaderInterceptor } from "./shared/services/interception";
+import { providePrimeNG } from "primeng/config";
 
+import LaraLightBlue from '@primeng/themes/lara';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,6 +33,16 @@ export const appConfig: ApplicationConfig = {
           }),
         provideEffects([
             TimeTrackingEffects,
-        ])
+        ]),
+        providePrimeNG({
+            theme: {
+                preset: LaraLightBlue,
+                options: {
+                    prefix: 'p',
+                    darkModeSelector: 'system',
+                    cssLayer: false
+                }
+            }
+        })
     ]
 };
