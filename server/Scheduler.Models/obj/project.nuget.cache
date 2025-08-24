@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5AKFPtVa+/D5E/BqBFIsHltEzdk5t9elc8qFmApLKwPMjzP7wuZjsAmT3YA15By8R76+VN3MSJRvHkzTcQc1gg==",
+  "dgSpecHash": "AspfFiKQa3c=",
   "success": true,
-  "projectFilePath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj",
+  "projectFilePath": "C:\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

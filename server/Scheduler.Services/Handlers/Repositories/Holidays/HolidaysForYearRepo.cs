@@ -43,7 +43,7 @@ public class HolidaysForYearRepo : IHolidaysForYearRepo
             ON h.HolidayId = hd.HolidayId            
         ";
 
-        var connString = _config["ConnectionString:SchedulerDB"];
+        var connString = _config["SchedulerDB"];
         var connection = new SqlConnection(connString);
 
         var holidays = await connection.QueryAsync<HolidayDateRepoViewModel>(

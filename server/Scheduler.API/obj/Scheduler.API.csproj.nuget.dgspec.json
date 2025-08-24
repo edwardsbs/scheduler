@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj": {}
+    "C:\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj": {
+    "C:\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj",
+        "projectUniqueName": "C:\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj",
         "projectName": "Scheduler.API",
-        "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj",
-        "packagesPath": "C:\\Users\\bsedw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.API\\obj\\",
+        "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj",
+        "packagesPath": "C:\\Users\\Brandon\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\scheduler\\server\\Scheduler.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bsedw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Brandon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
-                "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj"
+              "C:\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
+                "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj"
               },
-              "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj": {
-                "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj"
+              "C:\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj": {
+                "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj"
               }
             }
           }
@@ -45,7 +46,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net7.0": {
@@ -64,6 +71,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.14, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.22.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -89,24 +100,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
+    "C:\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj",
+        "projectUniqueName": "C:\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj",
         "projectName": "Scheduler.Domain",
-        "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj",
-        "packagesPath": "C:\\Users\\bsedw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\obj\\",
+        "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj",
+        "packagesPath": "C:\\Users\\Brandon\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\scheduler\\server\\Scheduler.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bsedw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Brandon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -115,6 +126,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -127,7 +139,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net7.0": {
@@ -174,24 +192,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj": {
+    "C:\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj",
+        "projectUniqueName": "C:\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj",
         "projectName": "Scheduler.Models",
-        "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj",
-        "packagesPath": "C:\\Users\\bsedw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\obj\\",
+        "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj",
+        "packagesPath": "C:\\Users\\Brandon\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\scheduler\\server\\Scheduler.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bsedw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Brandon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -200,6 +218,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -212,7 +231,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net7.0": {
@@ -233,24 +258,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj": {
+    "C:\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
+        "projectUniqueName": "C:\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
         "projectName": "Scheduler.Services",
-        "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
-        "packagesPath": "C:\\Users\\bsedw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Services\\obj\\",
+        "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.Services\\Scheduler.Services.csproj",
+        "packagesPath": "C:\\Users\\Brandon\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\scheduler\\server\\Scheduler.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bsedw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Brandon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -259,17 +284,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
-                "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj"
+              "C:\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj": {
+                "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.Domain\\Scheduler.Domain.csproj"
               },
-              "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj": {
-                "projectPath": "C:\\Users\\bsedw\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj"
+              "C:\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj": {
+                "projectPath": "C:\\repos\\scheduler\\server\\Scheduler.Models\\Scheduler.Models.csproj"
               }
             }
           }
@@ -278,7 +304,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net7.0": {
@@ -321,7 +353,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

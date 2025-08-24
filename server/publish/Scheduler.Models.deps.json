@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Scheduler.Models/1.0.0": {
+        "runtime": {
+          "Scheduler.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Scheduler.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

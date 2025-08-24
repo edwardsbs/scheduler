@@ -28,7 +28,7 @@ public class HolidaysRepo : IHolidaysRepo
                     FROM scheduler.HolidayDate 
                     WHERE YearId=@YearId";
 
-        var connString = _config["ConnectionString:SchedulerDB"];
+        var connString = _config["SchedulerDB"];
         //using (var connection = new SqlConnection(connString))
         //{
         //    products = connection.Query<Holiday>(sql).ToList();

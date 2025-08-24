@@ -22,7 +22,7 @@ public static class Bootstrapper
 
         //Entity Framework
         services.AddDbContext<SchedulerContext>(
-            builder => builder.UseSqlServer(config["ConnectionString:SchedulerDB"],
+            builder => builder.UseSqlServer(config["SchedulerDB"],
                     x => x.MigrationsAssembly(typeof(SchedulerContext).Assembly.FullName))
                 .EnableSensitiveDataLogging());
 

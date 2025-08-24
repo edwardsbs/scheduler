@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("becc8f42-2d48-4cb4-a3be-e9ef7eb464a6")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Scheduler.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b202339eca7128cf10e5ad078dec6d4e25346ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("Scheduler.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Scheduler.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
