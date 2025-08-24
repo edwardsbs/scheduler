@@ -11,7 +11,8 @@ import { TimeTrackingEffects } from "./scheduler/data-access/store/time-tracking
 import { AddHeaderInterceptor } from "./shared/services/interception";
 import { providePrimeNG } from "primeng/config";
 
-import LaraLightBlue from '@primeng/themes/lara';
+// import LaraLightBlue from '@primeng/themes/lara';
+import Aura from '@primeng/themes/aura';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -36,7 +37,7 @@ export const appConfig: ApplicationConfig = {
         ]),
         providePrimeNG({
             theme: {
-                preset: LaraLightBlue,
+                preset: Aura,
                 options: {
                     prefix: 'p',
                     darkModeSelector: 'system',

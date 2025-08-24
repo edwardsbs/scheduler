@@ -2,13 +2,14 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewPto, NewPtoAnnual, PtoAnnual, PtoSchedule } from '../models';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PtoHttpService {
 
-  apiPath = "https://localhost:44338/Pto"
+  apiPath = environment.apiUrl + "Pto"
 
   constructor(
     private http: HttpClient

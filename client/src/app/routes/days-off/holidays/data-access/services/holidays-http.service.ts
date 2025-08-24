@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Holiday, HolidayDate } from '../models';
 import { Observable, from, map, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Observable, from, map, tap } from 'rxjs';
 export class HolidaysHttpService {
   // http://localhost:37927/swagger/index.html
   //https://localhost:44318/swagger/index.html
-  apiPath = "https://localhost:44338/Holidays"
+  apiPath = environment.apiUrl + "Holidays"
 
   constructor(
     private http: HttpClient

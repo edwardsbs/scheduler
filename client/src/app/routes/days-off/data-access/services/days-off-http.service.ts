@@ -2,13 +2,14 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Year } from '../models';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DaysOffHttpService {
 
-  apiPath = "https://localhost:44338/Scheduler"
+  apiPath = environment.apiUrl + "Scheduler"
 
   constructor(
     private http: HttpClient
