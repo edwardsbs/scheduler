@@ -1,2 +1,0 @@
- FROM nginx:latest
- COPY dist/scheduler /usr/share/nginx/html
