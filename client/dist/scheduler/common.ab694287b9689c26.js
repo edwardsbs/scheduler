@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkScheduler=self.webpackChunkScheduler||[]).push([[76],{5312:(n,e,u)=>{u.d(e,{c:()=>c});const c={production:!0,apiUrl:"http://192.168.0.62:5000/"}}}]);
