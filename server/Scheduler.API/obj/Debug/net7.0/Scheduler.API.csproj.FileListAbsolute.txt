@@ -174,3 +174,9 @@ C:\repos\scheduler\server\Scheduler.API\obj\Debug\net7.0\refint\Scheduler.API.dl
 C:\repos\scheduler\server\Scheduler.API\obj\Debug\net7.0\Scheduler.API.pdb
 C:\repos\scheduler\server\Scheduler.API\obj\Debug\net7.0\Scheduler.API.genruntimeconfig.cache
 C:\repos\scheduler\server\Scheduler.API\obj\Debug\net7.0\ref\Scheduler.API.dll
+C:\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\publish\web.config
+C:\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\publish\appsettings.Development.json
+C:\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\publish\appsettings.json
+C:\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\publish\Scheduler.API.deps.json
+C:\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\publish\Scheduler.API.runtimeconfig.json
+C:\repos\scheduler\server\Scheduler.API\bin\Debug\net7.0\publish\Scheduler.API.staticwebassets.endpoints.json
