@@ -30,12 +30,13 @@ builder.Services.AddCors(opts => {
     //opts.AddPolicy("AllowAngularOrigins");
     opts.AddDefaultPolicy(policy =>
     {
-        var origins = configuration["AllowedOrigins"].Split(",").ToList();
+        //var origins = configuration["AllowedOrigins"].Split(",").ToList();
         policy
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowAnyOrigin()
-        .WithOrigins(origins.ToArray());
+        .WithOrigins("http://localhost:4200", "http://192.168.0.62:5000");
+        //.WithOrigins(origins.ToArray());
         
         //.WithOrigins("http://localhost:4200")
     });
