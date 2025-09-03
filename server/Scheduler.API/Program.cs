@@ -34,7 +34,6 @@ builder.Services.AddCors(opts => {
         policy
         .AllowAnyHeader()
         .AllowAnyMethod()
-        .AllowAnyOrigin()
         .WithOrigins("http://localhost:4200", "http://192.168.0.62");
         //.WithOrigins(origins.ToArray());
         
@@ -56,9 +55,11 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
-app.UseAuthorization();
+app.UseRouting();
 
 app.UseCors();
+
+app.UseAuthorization();
 
 app.MapControllers();
 
