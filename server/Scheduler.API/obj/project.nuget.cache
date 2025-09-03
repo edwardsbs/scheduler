@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/o1dLbhz244=",
+  "dgSpecHash": "jVPSZakpqA4=",
   "success": true,
   "projectFilePath": "C:\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj",
   "expectedPackageFiles": [
@@ -87,7 +87,7 @@
       "filePath": "C:\\repos\\scheduler\\server\\Scheduler.API\\Scheduler.API.csproj",
       "libraryId": "MediatR",
       "targetGraphs": [
-        "net7.0"
+        "net8.0"
       ]
     }
   ]
