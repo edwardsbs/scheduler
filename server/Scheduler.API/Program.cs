@@ -43,6 +43,8 @@ builder.Services.AddCors(opts => {
     }
 );
 
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
+
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
 var app = builder.Build();
